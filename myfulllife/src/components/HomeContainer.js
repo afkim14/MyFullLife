@@ -14,7 +14,7 @@ class HomeContainer extends Component {
 
   render() {
     return (
-      <Container style={{textAlign: 'center'}}>
+      <Container style={{textAlign: 'center', backgroundColor: 'rgb(139, 205, 237)', height: '100%'}}>
         <PointsContainer />
         <Header as='h2'>Welcome Fernando!</Header>
         <Image src='./images/temp.jpg' />
