@@ -24,7 +24,7 @@ class LeftNavBar extends Component {
   }
 
   handleKeyPress = (event) => {
-	  var chosenPage = 'home';
+	  var chosenPage = this.state.selectedPath;
 	  switch (event.keyCode)
 	  {
 		  case 49:
