@@ -22,7 +22,7 @@ class LeftNavBar extends Component {
     this.setState({ selectedPath: arg.id });
     this.props.onNavBarClick(arg.id);
   }
-  
+
   handleKeyPress = (event) => {
 	  var chosenPage = 'home';
 	  switch (event.keyCode)
@@ -47,17 +47,17 @@ class LeftNavBar extends Component {
 			  break;
 		  case 55:
 			  chosenPage='logout';
-			  break; 
+			  break;
 	  }
 	  this.props.onNavBarClick(chosenPage);
 	  this.setState({ selectedPath: chosenPage });
 	  console.log(this.state.selectedPath);
   }
-  
+
   componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
   }
-  
+
   componentWillUnmount() {
 	  document.removeEventListener('keydown', this.handleKeyPress);
   }
@@ -66,8 +66,8 @@ class LeftNavBar extends Component {
     return (
       <Container>
         <Header as='h2' style={{textAlign: 'center'}}>My Full Life</Header>
-        <SideNav theme={theme} defaultSelectedPath={"home"}
-			selectedPath={this.state.selectedPath}
+        <SideNav theme={theme}
+			      selectedPath={this.state.selectedPath}
             onItemSelection={this.onItemSelection}>
             <Nav id={'home'}>
               <NavIcon>
