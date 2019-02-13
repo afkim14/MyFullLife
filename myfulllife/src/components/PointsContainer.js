@@ -13,7 +13,7 @@ class PointsContainer extends Component {
 
   render() {
     return (
-      <Header as='h3' style={{color: "#6b6b6b"}}>Group Total Points: 100/2000, Individual Points: 30</Header>
+      <Header as='h3' style={{color: "black", fontFamily:"Comfortaa"}}>You earned 30 accomplishment points this week. As a group, you have accumulated 1000 points.</Header>
     );
   }
 }
