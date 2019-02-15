@@ -27,6 +27,18 @@ class HomeContainer extends Component {
     super();
     this.state = {currentImageIndex: 0};
   }
+	
+  handleKeyPress = (event) => {
+  	  switch (event.keyCode)
+	  {
+		  case 37:
+			  this.prevImage();
+			  break;
+		  case 39:
+			  this.nextImage();
+			  break;
+	  }
+  }
 
   prevImage = () => {
     var newIdx = this.state.currentImageIndex-1;
@@ -37,6 +49,14 @@ class HomeContainer extends Component {
   nextImage = () => {
     this.setState({currentImageIndex: (this.state.currentImageIndex+1) % imagesInfo.length});
   }
+    
+    componentDidMount() {
+	  document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+	  document.removeEventListener('keydown', this.handleKeyPress);
+  }
 
   render() {
     return (
@@ -44,11 +64,12 @@ class HomeContainer extends Component {
     		<div style={{padding:25}}></div>
             <Header as='h1' style={{fontFamily:'Comfortaa', margin:'0', fontSize:'75pt'}}>Welcome Fernando!</Header>
     		<div style={{padding:25}}></div>
-        <div style={{height: 400}}>
-          <Button style={{float: "left", marginTop: 125}} onClick={this.prevImage}>Prev</Button>
+        <div style={{height: 330}}>
+		  { /* <Button style={{float: "left", marginTop: 125}} onClick={this.prevImage}>Prev</Button> */ }
           <Image style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
-          <Button style={{float: "right",  marginTop: 125}} onClick={this.nextImage}>Next</Button>
+		  { /* <Button style={{float: "right",  marginTop: 125}} onClick={this.nextImage}>Next</Button> */}
         </div>
+		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {this.state.currentImageIndex} </div>
     		<PointsContainer />
       </Container>
     );
