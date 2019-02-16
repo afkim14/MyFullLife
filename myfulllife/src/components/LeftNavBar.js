@@ -1,5 +1,5 @@
 import React, { Component, Text } from 'react';
-import { SideNav, Nav, NavIcon } from 'react-sidenav';
+import { SideNav, Nav, NavIcon, Navbar } from 'react-sidenav';
 import {
   Container,
   Image,
@@ -65,7 +65,7 @@ class LeftNavBar extends Component {
   render() {
     return (
       <Container>
-        <Header as='h2' style={{textAlign: 'center'}}>My Full Life</Header>
+        <Header as='h2' style={{textAlign: 'center', fontFamily:'Comfortaa'}}>My Full Life</Header>
         <SideNav theme={theme}
 			      selectedPath={this.state.selectedPath}
             onItemSelection={this.onItemSelection}>
