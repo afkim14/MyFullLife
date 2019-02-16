@@ -31,21 +31,24 @@ class LeftNavBar extends Component {
 			  chosenPage='home';
 			  break;
 		  case 50:
-			  chosenPage='courses';
+			  chosenPage='community';
 			  break;
 		  case 51:
-			  chosenPage='goals';
+			  chosenPage='courses';
 			  break;
 		  case 52:
-			  chosenPage='journal';
+			  chosenPage='goals';
 			  break;
 		  case 53:
-			  chosenPage='contacts';
+			  chosenPage='journal';
 			  break;
 		  case 54:
-			  chosenPage='profile';
+			  chosenPage='contacts';
 			  break;
 		  case 55:
+			  chosenPage='profile';
+			  break;
+		  case 56:
 			  chosenPage='logout';
 			  break;
 	  }
@@ -75,41 +78,47 @@ class LeftNavBar extends Component {
               </NavIcon>
               Home (1)
             </Nav>
+	  		<Nav id={'community'}>
+              <NavIcon>
+                <Image src='./icons/home.png' style={{width: 20, marginRight: 10}} />
+              </NavIcon>
+              Community (2)
+            </Nav>
             <Nav id={'courses'}>
               <NavIcon>
                 <Image src='./icons/courses.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Courses (2)
+              Courses (3)
             </Nav>
             <Nav id={'goals'}>
               <NavIcon>
                 <Image src='./icons/goals.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Goals (3)
+              Goals (4)
             </Nav>
             <Nav id={'journal'}>
               <NavIcon>
                 <Image src='./icons/journal.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Journal (4)
+              Journal (5)
             </Nav>
             <Nav id={'contacts'}>
               <NavIcon>
                 <Image src='./icons/contacts.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Contacts (5)
+              Contacts (6)
             </Nav>
             <Nav id={'profile'}>
               <NavIcon>
                 <Image src='./icons/profile.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Profile (6)
+              Profile (7)
             </Nav>
             <Nav id={'logout'}>
               <NavIcon>
                 <Image src='./icons/logout.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
-              Log Out (7)
+              Log Out (8)
             </Nav>
         </SideNav>
       </Container>

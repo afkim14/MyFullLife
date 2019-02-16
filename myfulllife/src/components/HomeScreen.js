@@ -8,6 +8,7 @@ import {
 
 import LeftNavBar from './LeftNavBar';
 import HomeContainer from './HomeContainer';
+import CommunityContainer from './CommunityContainer';
 import CoursesContainer from './CoursesContainer';
 import GoalsContainer from './GoalsContainer';
 import JournalContainer from './JournalContainer';
@@ -43,6 +44,8 @@ class HomeScreen extends Component {
           switch(this.state.currentTab) {
             case 'home':
               return <HomeContainer />;
+		  case 'community':
+			  return <CommunityContainer />;
             case 'courses':
               return <CoursesContainer />;
             case 'goals':
