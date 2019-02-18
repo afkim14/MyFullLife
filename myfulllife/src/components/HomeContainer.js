@@ -8,6 +8,7 @@ import {
 import { Slide } from 'react-slideshow-image'
 import PointsContainer from './PointsContainer';
 
+/*
 const properties = {
   autoplay: false,
   duration: 5000,
@@ -16,6 +17,7 @@ const properties = {
   indicators: true,
   arrows: true
 }
+*/
 
 const imagesInfo = [
   {src: './images/farmers-market.jpg', alt: "Image of a farmer's market"},

@@ -64,7 +64,7 @@ class LeftNavBar extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{marginTop: 10}}>
         <Header as='h2' style={{textAlign: 'center', fontFamily:'Comfortaa'}}>My Full Life</Header>
         <SideNav theme={theme}
 			      selectedPath={this.state.selectedPath}
