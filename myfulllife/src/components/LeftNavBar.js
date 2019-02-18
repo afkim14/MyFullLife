@@ -80,7 +80,7 @@ class LeftNavBar extends Component {
             </Nav>
 	  		<Nav id={'community'}>
               <NavIcon>
-                <Image src='./icons/home.png' style={{width: 20, marginRight: 10}} />
+                <Image src='./icons/community.png' style={{width: 20, marginRight: 10}} />
               </NavIcon>
               Community (2)
             </Nav>
