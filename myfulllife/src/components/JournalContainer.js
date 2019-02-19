@@ -19,10 +19,10 @@ class JournalContainer extends Component {
       newEntry: false,
       altView: false,
       entries: [
-        {title: "Test Text Journal Entry", type: "text", date: "02/16/2019"},
-        {title: "Test Video Journal Entry", type: "video", date: "02/16/2019"},
-        {title: "Test Voice Journal Entry", type: "voice", date: "02/16/2019"},
-        {title: "Test Image Journal Entry", type: "image", date: "02/16/2019"}
+        {title: "My Trip to The Mall", type: "text", date: "02/16/2019"},
+        {title: "Playing Basketball", type: "video", date: "02/5/2019"},
+        {title: "My Talent Show Audition", type: "voice", date: "1/22/2019"},
+        {title: "Making Dinner", type: "image", date: "1/4/2019"}
       ],
 
       // new entry
@@ -45,7 +45,7 @@ class JournalContainer extends Component {
   submitEntry = () => {
     var newEntries = this.state.entries;
     if (this.state.title != "") {
-      newEntries.push({title: this.state.title, description: this.state.description, type: "text", date: "02/16/2019"});
+      newEntries.push({title: this.state.title, description: this.state.description, type: "text", date: "02/20/2019"});
     }
     this.setState({newEntry: false});
   }
