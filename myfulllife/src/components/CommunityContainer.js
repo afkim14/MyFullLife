@@ -18,8 +18,10 @@ const properties = {
 }
 
 const imagesInfo = [
-  {src: './images/farmers-market.jpg', alt: "Image of a farmer's market"},
-  {src: './images/temp.jpg', alt: "Mr. Microsoft Himself."}
+  {src: './images/farmers-market.jpg', alt: "Image of the Evanston farmer's market. A variety of vendors and families are shown.", 
+   text: "Evanston hosted a Farmer's Market this Sunday. Thanks to John Doe for this awesome picture!"},
+  {src: './images/social-justice.jpg', alt: "Flyer for The World Day of Social Justice, which is being held on February 20th, 2019.",
+   text: "The World Day of Social Justice is February 20th. Learn more at our blog post on our website!"}
 ];
 
 class CommunityContainer extends Component {
@@ -60,20 +62,56 @@ class CommunityContainer extends Component {
 
   render() {
     return (
-      <Container style={{textAlign: 'center', background: 'linear-gradient(rgb(139, 205, 237) 75%, white)', height:'100vh'}}>
+      <Container style={{textAlign: 'center', background: 'linear-gradient(rgb(139, 205, 237) 75%, white)', height:'100vh', fontFamily:'Comfortaa'}}>
     		<div style={{padding:25}}></div>
-            <Header as='h1' style={{fontFamily:'Comfortaa', margin:'0', fontSize:'75pt'}}>Community</Header>
+            <Header as='h1' style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Community</Header>
     		<div style={{padding:25}}></div>
         <div style={{height: 330}}>
-		  { /* <Button style={{float: "left", marginTop: 125}} onClick={this.prevImage}>Prev</Button> */ }
           <Image style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
-		  { /* <Button style={{float: "right",  marginTop: 125}} onClick={this.nextImage}>Next</Button> */}
         </div>
-		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {this.state.currentImageIndex} </div>
-    		<PointsContainer />
+		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {imagesInfo[this.state.currentImageIndex].text} </div>
+		<div style={grid}>
+			<div style={gridItem}> 
+				<div style={{fontSize: '16pt'}}> Upcoming Events </div>
+				<hr />
+				<div style={{fontSize: '12pt'}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
+				<hr />
+				<div style={{fontSize: '12pt'}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
+				<hr />
+				<div style={{fontSize: '12pt'}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
+			</div>
+			<div style={gridItem}>
+				<div style={{fontSize: '16pt'}}> Links </div>
+				<hr />
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
+				<hr />
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
+				<hr />
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
+			</div>
+		</div>
       </Container>
     );
   }
 }
 
 export default CommunityContainer
+
+const grid = {
+  display: 'grid',
+  gridTemplateColumns: 'auto auto',
+  gridRowGap: '50px',
+  gridColumnGap: '50px',
+  padding: '50px',
+};
+
+const gridItem = {
+ padding: '20px',
+ backgroundColor: 'white',
+ textAlign: 'center'
+};
+
+const borderItem = {
+	fontSize: '12px',
+	border: '3px rounded black'
+};

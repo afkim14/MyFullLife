@@ -67,6 +67,7 @@ class HomeContainer extends Component {
 			<div style={{textAlign: 'center'}}>
 				<Image style={profilePic} src='./images/profile-photo.png' />
 			</div>
+			<div style={{fontFamily: 'Comfortaa', fontSize: "24pt", textAlign: 'center'}}> Select an option from the menu to get started. </div>
 			<div style={grid}>
 				<div style={gridItem}>
 					<Image style={tipIconStyle} src='./icons/accomplishment.png' alt="Accomplishments Update" />
@@ -82,7 +83,7 @@ class HomeContainer extends Component {
 				</div>
 				<div style={gridItem}>
 					<Image style={tipIconStyle} src='./icons/journal.png' alt="Journal Update"/>
-					<div style={tipElement}> Is there anything you are proud of or had fun doing this week? </div>
+					<div style={tipElement}> Is there anything you are proud of or had fun doing this week? Write a journal entry to earn 5 points!</div>
 				</div>
 			</div>
       </Container>
