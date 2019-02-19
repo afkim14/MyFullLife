@@ -37,7 +37,7 @@ class HomeScreen extends Component {
   render() {
     return (
       <div>
-		<Navigation>
+	      <Navigation>
           <LeftNavBar onNavBarClick={this.onNavBarClick} />
         </Navigation>
         {(() => {

@@ -62,12 +62,12 @@ class CommunityContainer extends Component {
 
   render() {
     return (
-      <Container style={{textAlign: 'center', background: 'linear-gradient(rgb(139, 205, 237) 75%, white)', height:'100vh', fontFamily:'Comfortaa'}}>
+      <div className="container-override">
     		<div style={{padding:25}}></div>
             <Header as='h1' style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Community</Header>
     		<div style={{padding:25}}></div>
         <div style={{height: 330}}>
-          <Image style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
+          <img style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
         </div>
 		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {imagesInfo[this.state.currentImageIndex].text} </div>
 		<div style={grid}>
@@ -90,7 +90,7 @@ class CommunityContainer extends Component {
 				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
 			</div>
 		</div>
-      </Container>
+      </div>
     );
   }
 }

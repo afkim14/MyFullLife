@@ -8,6 +8,7 @@ import {
 import { Slide } from 'react-slideshow-image'
 import PointsContainer from './PointsContainer';
 
+/*
 const properties = {
   autoplay: false,
   duration: 5000,
@@ -16,6 +17,7 @@ const properties = {
   indicators: true,
   arrows: true
 }
+*/
 
 const imagesInfo = [
   {src: './images/farmers-market.jpg', alt: "Image of a farmer's market"},
@@ -27,7 +29,7 @@ class HomeContainer extends Component {
     super();
     this.state = {currentImageIndex: 0};
   }
-	
+
   handleKeyPress = (event) => {
   	  switch (event.keyCode)
 	  {
@@ -49,7 +51,7 @@ class HomeContainer extends Component {
   nextImage = () => {
     this.setState({currentImageIndex: (this.state.currentImageIndex+1) % imagesInfo.length});
   }
-    
+
     componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
   }
@@ -60,12 +62,12 @@ class HomeContainer extends Component {
 
   render() {
     return (
-      <Container style={{background: 'linear-gradient(rgb(139, 205, 237) 75%, white)', height:'100vh'}}>
+      <div className="container-override">
     		<div style={{padding:25}}></div>
             <Header as='h1' style={{textAlign:'center', fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Happy Wednesday, Sammy!</Header>
 			<div style={{padding:10}}></div>
 			<div style={{textAlign: 'center'}}>
-				<Image style={profilePic} src='./images/profile-photo.png' />
+				<img style={profilePic} src='./images/profile-photo.png' />
 			</div>
 			<div style={{fontFamily: 'Comfortaa', fontSize: "24pt", textAlign: 'center'}}> Select an option from the menu to get started. </div>
 			<div style={grid}>
@@ -86,7 +88,7 @@ class HomeContainer extends Component {
 					<div style={tipElement}> Is there anything you are proud of or had fun doing this week? Write a journal entry to earn 5 points!</div>
 				</div>
 			</div>
-      </Container>
+      </div>
     );
   }
 }
@@ -122,7 +124,7 @@ const tipIconStyle = {
 };
 
 const profilePic = {
-	textAlign:'center',
+	alignItems:'center',
     width:'100px',
     margin: '10px',
     border: '5px solid grey',
