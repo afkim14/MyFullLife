@@ -36,3 +36,7 @@
 	background: linear-gradient(rgb(139, 205, 237) 100%, blue);
 	height:100vh;	
 }
+
+.dontRead {
+	speak: none;
+}

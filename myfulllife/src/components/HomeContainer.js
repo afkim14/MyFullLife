@@ -72,19 +72,19 @@ class HomeContainer extends Component {
 			<div style={{fontFamily: 'Comfortaa', fontSize: "24pt", textAlign: 'center'}}> Select an option from the menu to get started. </div>
 			<div style={grid}>
 				<div style={gridItem}>
-					<Image style={tipIconStyle} src='./icons/accomplishment.png' alt="Accomplishments Update" />
+					<Image style={tipIconStyle} src='./icons/accomplishment.png' alt="Accomplishments Update" aria-hidden='true' />
 					<div style={tipElement}> You gained 5 points for logging in today. You’ve earned 25 points this week, which is only 10 away from beating your record! </div>
 				</div>
 				<div style={gridItem}>
-					<Image style={tipIconStyle} src='./icons/community.png' alt="Community Update" />
-					<div style={tipElement}> There’s some great events happening at the C.I.F. this week. </div>
+					<Image style={tipIconStyle} src='./icons/community.png' alt="Community Update" aria-hidden='true' />
+					<div style={tipElement}> There’s some great events happening at the C.I.F. this week. Check out the Community tab to learn more! </div>
 				</div>
 				<div style={gridItem}>
-					<Image style={tipIconStyle} src='./icons/goals.png' alt="Goals Update"/>
-					<div style={tipElement}> You are so close to finishing the goal “Healthy Eating”!  </div>
+					<Image style={tipIconStyle} src='./icons/goals.png' alt="Goals Update" aria-hidden='true'/>
+					<div style={tipElement}> You are so close to finishing the goal “Healthy Eating”! Discover your progress over on the Goal tab.</div>
 				</div>
 				<div style={gridItem}>
-					<Image style={tipIconStyle} src='./icons/journal.png' alt="Journal Update"/>
+					<Image style={tipIconStyle} src='./icons/journal.png' alt="Journal Update" aria-hidden='true'/>
 					<div style={tipElement}> Is there anything you are proud of or had fun doing this week? Write a journal entry to earn 5 points!</div>
 				</div>
 			</div>

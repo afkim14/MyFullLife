@@ -73,20 +73,20 @@ class CommunityContainer extends Component {
 		<div style={grid}>
 			<div style={gridItem}> 
 				<div style={{fontSize: '16pt'}}> Upcoming Events </div>
-				<hr />
+				<hr aria-hidden='true' />
 				<div style={{fontSize: '12pt'}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
-				<hr />
+				<hr aria-hidden='true' />
 				<div style={{fontSize: '12pt'}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
-				<hr />
+				<hr aria-hidden='true' />
 				<div style={{fontSize: '12pt'}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
 			</div>
 			<div style={gridItem}>
 				<div style={{fontSize: '16pt'}}> Links </div>
-				<hr />
+				<hr aria-hidden='true' />
 				<a style={{fontSize: '12pt'}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
-				<hr />
+				<hr aria-hidden='true' />
 				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
-				<hr />
+				<hr aria-hidden='true' />
 				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
 			</div>
 		</div>

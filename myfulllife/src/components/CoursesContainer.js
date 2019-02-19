@@ -14,10 +14,10 @@ class CoursesContainer extends Component {
     this.state = {
       courseCategories: [
         {name: "Professional", meta: "Learn more about jobs.", image: "./icons/suitcase.png"},
-        {name: "Coursework", meta: "Learn more about coureworks.", image: "./icons/open-book.png"},
+        {name: "Coursework", meta: "Learn more about courseworks.", image: "./icons/open-book.png"},
         {name: "Athletic", meta: "Learn more about exercise and sports.", image: "./icons/running.png"},
-        {name: "Getting Around", meta: "Learn more about safety skills.", image: "./icons/human.png"},
-        {name: "Hopes and Dreams", meta: "Learn more about hopes and dreams.", image: "./icons/safety.png"},
+        {name: "Getting Around", meta: "Learn more about safety skills.", image: "./icons/getting-around.png"},
+        {name: "Hopes and Dreams", meta: "Learn more about hopes and dreams.", image: "./icons/human.png"},
         {name: "Household", meta: "Learn more about household chores.", image: "./icons/bed.png"},
         {name: "Social", meta: "Learn more about social skills.", image: "./icons/users.png"},
         {name: "Fun and Talents", meta: "Learn more about entertainment and talents.", image: "./icons/confetti.png"},
