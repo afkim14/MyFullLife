@@ -69,6 +69,7 @@ class LeftNavBar extends Component {
     return (
       <Container>
         <Header as='h2' style={{textAlign: 'center', fontFamily:'Comfortaa', marginTop: '10px'}}>My Full Life Menu</Header>
+		<hr aria-hidden='true' />
         <SideNav theme={theme}
 			      selectedPath={this.state.selectedPath}
             onItemSelection={this.onItemSelection}>
@@ -127,6 +128,9 @@ class LeftNavBar extends Component {
 		<div style={{textAlign: 'center'}}>
 			<img style={profilePic} src='./images/profile-photo.png' aria-hidden='true' />
 		</div>
+		<div style={{padding: '5px'}} />
+		<div style={{textAlign:'center', fontSize: '16pt'}} aria-hidden='true'> 30 Points </div>
+		<div style={{padding: '5px'}} />
 		<div style={{textAlign: 'center'}}>
 			<img style={{width:'100px', height: '100px'}} src='./images/cif-logo.jpg' aria-hidden='true' />
 		</div>
