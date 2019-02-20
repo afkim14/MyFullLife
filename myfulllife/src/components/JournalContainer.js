@@ -97,10 +97,6 @@ class JournalContainer extends Component {
               <Icon name='file alternate' />
               New Entry
             </Button>
-            <Button icon labelPosition='left' onClick={() => this.setState({altView: !this.state.altView})}>
-              <Icon name='arrows alternate horizontal' />
-              Alternate View
-            </Button>
             <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20}}>
               <Table.Header>
                 <Table.Row>
