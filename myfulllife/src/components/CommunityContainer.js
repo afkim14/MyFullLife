@@ -18,7 +18,7 @@ const properties = {
 }
 
 const imagesInfo = [
-  {src: './images/farmers-market.jpg', alt: "Image of the Evanston farmer's market. A variety of vendors and families are shown.", 
+  {src: './images/farmers-market.jpg', alt: "Image of the Evanston farmer's market. A variety of vendors and families are shown.",
    text: "Evanston hosted a Farmer's Market this Sunday. Thanks to John Doe for this awesome picture!"},
   {src: './images/social-justice.jpg', alt: "Flyer for The World Day of Social Justice, which is being held on February 20th, 2019.",
    text: "The World Day of Social Justice is February 20th. Learn more at our blog post on our website!"}
@@ -29,7 +29,7 @@ class CommunityContainer extends Component {
     super();
     this.state = {currentImageIndex: 0};
   }
-	
+
   handleKeyPress = (event) => {
   	  switch (event.keyCode)
 	  {
@@ -51,7 +51,7 @@ class CommunityContainer extends Component {
   nextImage = () => {
     this.setState({currentImageIndex: (this.state.currentImageIndex+1) % imagesInfo.length});
   }
-    
+
     componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
   }

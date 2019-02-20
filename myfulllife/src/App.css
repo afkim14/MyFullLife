@@ -34,7 +34,7 @@
 .container-override{
 	text-align: center;
 	background: linear-gradient(rgb(139, 205, 237) 100%, blue);
-	height:100vh;	
+	height: 100%;
 }
 
 .dontRead {
