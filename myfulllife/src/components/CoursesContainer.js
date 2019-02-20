@@ -29,7 +29,6 @@ class CoursesContainer extends Component {
   render() {
     return (
       <Container style={{textAlign: 'center'}}>
-        <PointsContainer />
         <Header as='h2' style={{textAlign: 'center'}}>Courses</Header>
         <Card.Group style={{marginLeft: 180}}>
         {

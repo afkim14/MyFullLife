@@ -64,7 +64,6 @@ class GoalsContainer extends Component {
     if (this.state.newGoal) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
           <Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
@@ -83,7 +82,7 @@ class GoalsContainer extends Component {
           {
             this.state.goalCategories.map(c => {
               return <Card>
-                      <Image src={c.image} style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#fff"}} size='tiny' />
+                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#fff"}} size='tiny' />
                       <Card.Content>
                         <Card.Header><Button onClick={() => this.selectCategory(c.name)}>{c.name}</Button></Card.Header>
                         <Card.Description>{c.meta}</Card.Description>

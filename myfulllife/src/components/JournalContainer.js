@@ -53,9 +53,8 @@ class JournalContainer extends Component {
   render() {
     if (this.state.newEntry) {
       return (
-        <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
-          <Header as='h2' style={{textAlign: 'center'}}>Journal</Header>
+        <div style={{textAlign: 'center'}}>
+          <h2 style={{textAlign: 'center'}}>Journal</h2>
           <Input onChange={this.updateTitle} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Title' />
           <Form>
             <TextArea onChange={this.updateDescription} style={{width: 600, height: 300}} placeholder='Description' />
@@ -79,7 +78,7 @@ class JournalContainer extends Component {
               Submit
             </Button>
           </div>
-        </Container>
+        </div>
       );
     } else {
       if (this.state.altView) {

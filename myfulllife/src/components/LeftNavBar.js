@@ -67,8 +67,8 @@ class LeftNavBar extends Component {
 
   render() {
     return (
-      <Container>
-        <Header as='h2' style={{textAlign: 'center', fontFamily:'Comfortaa', marginTop: '10px'}}>My Full Life Menu</Header>
+      <Container style={{backgroundColor: 'lightGrey', height:'100%'}}>
+        <h2 style={{textAlign: 'center', fontFamily:'Comfortaa', padding: '10px'}}>My Full Life Menu</h2>
 		<hr aria-hidden='true' />
         <SideNav theme={theme}
 			      selectedPath={this.state.selectedPath}
@@ -121,7 +121,6 @@ class LeftNavBar extends Component {
               </NavIcon>
               Log Out (8)
             </Nav>
-        </SideNav>
 		<div style={{padding: '5px'}} />
 		<hr aria-hidden='true' />
 		<div style={{padding: '5px'}} />
@@ -134,6 +133,7 @@ class LeftNavBar extends Component {
 		<div style={{textAlign: 'center'}}>
 			<img style={{width:'100px', height: '100px'}} src='./images/cif-logo.jpg' aria-hidden='true' />
 		</div>
+        </SideNav>
       </Container>
     );
   }
