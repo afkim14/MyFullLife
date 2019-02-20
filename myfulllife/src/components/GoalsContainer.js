@@ -27,15 +27,15 @@ class GoalsContainer extends Component {
         {text: "Go to the doctor by Friday.", category: "Wellness"}
       ],
       goalCategories: [
-        {name: "Professional", meta: "Learn more about jobs.", image: "./icons/suitcase.png"},
-        {name: "Coursework", meta: "Learn more about courseworks.", image: "./icons/open-book.png"},
-        {name: "Athletic", meta: "Learn more about exercise and sports.", image: "./icons/running.png"},
-        {name: "Getting Around", meta: "Learn more about safety skills.", image: "./icons/getting-around.png"},
-        {name: "Hopes and Dreams", meta: "Learn more about hopes and dreams.", image: "./icons/human.png"},
-        {name: "Household", meta: "Learn more about household chores.", image: "./icons/bed.png"},
-        {name: "Social", meta: "Learn more about social skills.", image: "./icons/users.png"},
-        {name: "Fun and Talents", meta: "Learn more about entertainment and talents.", image: "./icons/confetti.png"},
-        {name: "Wellness", meta: "Learn more about self-care and health.", image: "./icons/care.png"},
+        {name: "Professional", meta: "Goals involving jobs.", image: "./icons/suitcase.png"},
+        {name: "Coursework", meta: "Goals involving coursework.", image: "./icons/open-book.png"},
+        {name: "Athletic", meta: "Goals involving exercise and sports.", image: "./icons/running.png"},
+        {name: "Getting Around", meta: "Goals involving safety skills.", image: "./icons/getting-around.png"},
+        {name: "Hopes and Dreams", meta: "Goals involving hopes and dreams.", image: "./icons/human.png"},
+        {name: "Household", meta: "Goals involving household chores.", image: "./icons/bed.png"},
+        {name: "Social", meta: "Goals involving social skills.", image: "./icons/users.png"},
+        {name: "Fun and Talents", meta: "Goals involving entertainment and talents.", image: "./icons/confetti.png"},
+        {name: "Wellness", meta: "Goals involving self-care and health.", image: "./icons/care.png"},
       ],
       tips: [
         {text: "Login to My Full Life everyday."},
@@ -75,7 +75,6 @@ class GoalsContainer extends Component {
     } else if (this.state.newCategory) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
           <Header as='h3' style={{color: "black", fontFamily:"Comfortaa", marginTop: 10}}>Select the category.</Header>
           <Card.Group style={{marginLeft: 180}}>
@@ -96,7 +95,6 @@ class GoalsContainer extends Component {
     } else {
       return (
         <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
           <Button icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
             <Icon name='file alternate' />
