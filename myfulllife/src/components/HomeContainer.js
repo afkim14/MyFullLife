@@ -69,7 +69,7 @@ class HomeContainer extends Component {
 			<div style={{textAlign: 'center'}}>
 				<img style={profilePic} src='./images/profile-photo.png' />
 			</div>
-			<div style={{fontFamily: 'Comfortaa', fontSize: "24pt", textAlign: 'center'}}> Select an option from the menu to get started. </div>
+			<div style={{fontFamily: 'Comfortaa', fontSize: "24pt", textAlign: 'center'}}> Select an option from the menu to get started. <br /> <br /> <br /> Here are some updates:</div>
 			<div style={grid}>
 				<div style={gridItem1}>
 					<Image style={tipIconStyle} src='./icons/accomplishment.png' alt="Accomplishments Update" aria-hidden='true' />

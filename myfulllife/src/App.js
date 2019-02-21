@@ -10,5 +10,15 @@ class App extends Component {
     );
   }
 }
+		
+export var canUseNumberKeys = true;
+
+export function enableNumberKeys() {
+	canUseNumberKeys=true;
+}
+
+export function disableNumberKeys() {
+	canUseNumberKeys=false;
+}
 
 export default App;

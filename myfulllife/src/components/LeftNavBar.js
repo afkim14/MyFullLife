@@ -6,6 +6,8 @@ import {
   Header
 } from 'semantic-ui-react'
 
+import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
+
 const theme = {
   hoverBgColor: "#f5f5f5",
   selectionBgColor: "#f5f5f5",
@@ -24,6 +26,8 @@ class LeftNavBar extends Component {
   }
 
   handleKeyPress = (event) => {
+	  if (canUseNumberKeys === false)
+		  return;
 	  var chosenPage = this.state.selectedPath;
 	  switch (event.keyCode)
 	  {
@@ -54,7 +58,6 @@ class LeftNavBar extends Component {
 	  }
 	  this.props.onNavBarClick(chosenPage);
 	  this.setState({ selectedPath: chosenPage });
-	  console.log(this.state.selectedPath);
   }
 
   componentDidMount() {
@@ -67,7 +70,7 @@ class LeftNavBar extends Component {
 
   render() {
     return (
-      <Container style={{backgroundColor: 'lightGrey', height:'100%'}}>
+      <Container style={{background: 'radial-gradient(circle, rgba(161,161,161,1) 0%, rgba(212,212,212,1) 100%)', height:'100vh'}}>
         <h2 style={{textAlign: 'center', fontFamily:'Comfortaa', padding: '10px'}}>My Full Life Menu</h2>
 		<hr aria-hidden='true' />
         <SideNav theme={theme}

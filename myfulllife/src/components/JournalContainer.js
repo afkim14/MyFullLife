@@ -12,6 +12,8 @@ import {
 } from 'semantic-ui-react'
 import PointsContainer from './PointsContainer';
 
+import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
+
 class JournalContainer extends Component {
   constructor() {
     super();
@@ -47,28 +49,35 @@ class JournalContainer extends Component {
     if (this.state.title != "") {
       newEntries.push({title: this.state.title, description: this.state.description, type: "text", date: "02/20/2019"});
     }
+    enableNumberKeys();
     this.setState({newEntry: false});
   }
 
   render() {
     if (this.state.newEntry) {
       return (
-        <div style={{textAlign: 'center'}}>
-          <h2 style={{textAlign: 'center'}}>Journal</h2>
+        <div style={{fontFamily:'Comfortaa', textAlign: 'center', height: '100vh', background: 'radial-gradient(circle, rgba(56,195,204,1) 0%, rgba(0,212,255,1) 100%)'}}>
+		  <div style={{padding:25}} />
+          <h2 style={{textAlign: 'center'}}>New Journal Entry</h2>
+		  <Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
+              <Icon name='cancel' />
+              Discard Entry
+		  </Button>
+	  	  <div style={{padding:5}} />
           <Input onChange={this.updateTitle} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Title' />
           <Form>
             <TextArea onChange={this.updateDescription} style={{width: 600, height: 300}} placeholder='Description' />
           </Form>
           <div style={{marginTop: 10}}>
-            <Button onClick={() => this.setState({newEntry: true})}>
+            <Button onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
               <Image style={{float: "left"}} src='./icons/camera-open.png' rounded size='mini' />
               Photo
             </Button>
-            <Button onClick={() => this.setState({newEntry: true})}>
+            <Button onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
               <Image style={{float: "left"}} src='./icons/video.png' rounded size='mini' />
               Video
             </Button>
-            <Button onClick={() => this.setState({newEntry: true})}>
+            <Button onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
               <Image style={{float: "left"}} src='./icons/mic-open.png' rounded size='mini' />
               Voice
             </Button>
@@ -89,14 +98,14 @@ class JournalContainer extends Component {
         );
       } else {
         return (
-          <Container style={{textAlign: 'center'}}>
-            <PointsContainer />
+          <div className='container-override'>
+			<div style={{padding:25}} />
             <Header as='h2' style={{textAlign: 'center'}}>Journal</Header>
-            <Button icon labelPosition='left' onClick={() => this.setState({newEntry: true})}>
+            <Button icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
               <Icon name='file alternate' />
               New Entry
             </Button>
-            <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20}}>
+            <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20, backgroundColor:'lightGrey', padding:10}}>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Journal Entries</Table.HeaderCell>
@@ -131,7 +140,7 @@ class JournalContainer extends Component {
                 })}
               </Table.Body>
             </Table>
-          </Container>
+          </div>
         );
       }
     }

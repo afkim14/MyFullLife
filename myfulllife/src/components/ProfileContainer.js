@@ -14,14 +14,28 @@ class ProfileContainer extends Component {
 
   render() {
     return (
-      <Container style={{textAlign: 'center'}}>
-        <PointsContainer />
+      <div className='container-override'>
+		<div style={{padding: 25}} />
         <Header as='h2' style={{textAlign: 'center'}}>Profile</Header>
-        <Image src='./icons/contacts.png' rounded centered size='tiny' />
+		<div style={{textAlign: 'center'}}>
+			<img style={profilePic} src='./images/profile-photo.png' />
+		</div>
         <Header as='h1' style={{textAlign: 'center'}}>John Doe</Header>
-      </Container>
+      </div>
     );
   }
 }
+
+const profilePic = {
+	alignItems:'center',
+    width:'200px',
+    margin: '10px',
+    border: '5px solid grey',
+	background: 'white',
+    borderRadius: '500px',
+    WebkitBorderRadius: '500px',
+    MozBorderRadius: '500px'
+};
+
 
 export default ProfileContainer

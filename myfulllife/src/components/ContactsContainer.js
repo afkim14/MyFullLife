@@ -10,6 +10,7 @@ import {
   Form
 } from 'semantic-ui-react'
 import PointsContainer from './PointsContainer';
+import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
 
 class ContactsContainer extends Component {
   constructor() {
@@ -40,14 +41,15 @@ class ContactsContainer extends Component {
     if (this.state.name != "") {
       newEntries.push({name: this.state.name, phone: this.state.phone});
     }
+	enableNumberKeys();
     this.setState({newEntry: false});
   }
 
   render() {
     if (this.state.newEntry) {
       return(
-        <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
+        <div className='container-override'>
+		  <div style={{padding: 25}} />
           <Header as='h2' style={{textAlign: 'center'}}>Contacts</Header>
           <Input onChange={this.updateName} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Name' />
           <Input onChange={this.updatePhone} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Phone Number' />
@@ -56,19 +58,23 @@ class ContactsContainer extends Component {
               <Icon name='upload' />
               Add New Contact
             </Button>
+			<Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => {enableNumberKeys(); this.setState({newEntry: false})}}>
+              <Icon name='cancel' />
+              Cancel
+            </Button>
           </div>
-        </Container>
+        </div>
       );
     } else {
       return (
-        <Container style={{textAlign: 'center'}}>
-          <PointsContainer />
+        <div className='container-override'>
+		  <div style={{padding: 25}} />
           <Header as='h2' style={{textAlign: 'center'}}>Contacts</Header>
-          <Button icon labelPosition='left' onClick={() => this.setState({newEntry: true})}>
+          <Button icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
             <Icon name='file alternate' />
             New Contact
           </Button>
-          <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20}}>
+          <Table basic='very' celled collapsing style={{width: 900, backgroundColor:'lightGrey', padding: 10, margin: "0 auto", marginTop: 20}}>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
@@ -91,7 +97,7 @@ class ContactsContainer extends Component {
               })}
             </Table.Body>
           </Table>
-        </Container>
+        </div>
       );
     }
   }
