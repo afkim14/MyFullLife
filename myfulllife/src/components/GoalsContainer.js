@@ -119,7 +119,7 @@ class GoalsContainer extends Component {
                               <Table.Cell>
                                 <Header as='h4' image>
                                   <Header.Content>
-                                    <a style={{color: "#3e3e3e"}} href="">{g.text}</a>
+                                    <a href="">{g.text}</a>
                                   </Header.Content>
                                 </Header>
                               </Table.Cell>

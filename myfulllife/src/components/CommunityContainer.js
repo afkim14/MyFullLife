@@ -83,11 +83,11 @@ class CommunityContainer extends Component {
 			<div style={gridItem}>
 				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Links </div>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com/category/blog/'> News </a>
+				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
 			</div>
 		</div>
       </div>
