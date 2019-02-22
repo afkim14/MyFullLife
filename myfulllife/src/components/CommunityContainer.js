@@ -107,7 +107,7 @@ const grid = {
 
 const gridItem = {
  padding: '20px',
- backgroundColor: '#F2EEE2',
+ backgroundColor: '#4ABDAC',
  textAlign: 'center'
 };
 

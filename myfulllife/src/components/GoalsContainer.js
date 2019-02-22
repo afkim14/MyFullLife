@@ -66,7 +66,7 @@ class GoalsContainer extends Component {
         <Container style={{textAlign: 'center'}}>
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
-          <Button style={{marginTop: 30, backgroundColor: "#4ABDAC", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
+          <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
             Submit
           </Button>
@@ -80,8 +80,8 @@ class GoalsContainer extends Component {
           <Card.Group style={{marginLeft: 180}}>
           {
             this.state.goalCategories.map(c => {
-              return <Card style={{backgroundColor: "#F2EEE2"}}>
-                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#F2EEE2"}} size='tiny' />
+              return <Card style={{backgroundColor: "#4ABDAC"}}>
+                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#4ABDAC"}} size='tiny' />
                       <Card.Content>
                         <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white'}} onClick={() => this.selectCategory(c.name)}>{c.name}</Button></Card.Header>
                         <Card.Description>{c.meta}</Card.Description>
@@ -97,11 +97,11 @@ class GoalsContainer extends Component {
         <div className='container-override'>
           <div style={{padding:25}} />
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
-          <Button style={{backgroundColor: "#4ABDAC", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
+          <Button style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
             <Icon name='file alternate' />
             New Goal
           </Button>
-          <Card style={{width: "80%", margin: "0 auto", marginTop: 20, backgroundColor: "#F2EEE2"}}>
+          <Card style={{width: "80%", margin: "0 auto", marginTop: 20, backgroundColor: "#4ABDAC"}}>
             <Card.Content>
               <Card.Header style={{color: "#3e3e3e"}}>Current Goals</Card.Header>
             </Card.Content>
@@ -131,7 +131,7 @@ class GoalsContainer extends Component {
             </Card.Content>
           </Card>
           <div style={{width: 1000, margin: "0 auto", marginLeft: 220}}>
-            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#F2EEE2"}}>
+            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#4ABDAC"}}>
               <Card.Content>
                 <Card.Header>Tips for Accomplishment</Card.Header>
               </Card.Content>
@@ -158,12 +158,12 @@ class GoalsContainer extends Component {
               </Table>
               </Card.Content>
             </Card>
-            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#F2EEE2"}}>
+            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#4ABDAC"}}>
               <Card.Content>
                 <Card.Header>Completed Goals</Card.Header>
               </Card.Content>
               <Card.Content>
-                <Button>Click to view</Button>
+                <Button style={{backgroundColor: "#F7B733", color: 'white'}}>Click to view</Button>
               </Card.Content>
             </Card>
           </div>

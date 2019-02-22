@@ -59,7 +59,7 @@ class JournalContainer extends Component {
         <div style={{fontFamily:'Comfortaa', textAlign: 'center', height: '100vh'}}>
 		  <div style={{padding:25}} />
           <h2 style={{textAlign: 'center'}}>New Journal Entry</h2>
-		  <Button style={{marginTop: 30, backgroundColor: "#4ABDAC", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
+		  <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
               <Icon name='cancel' />
               Discard Entry
 		  </Button>
@@ -82,7 +82,7 @@ class JournalContainer extends Component {
               Voice
             </Button>
             <br></br>
-            <Button style={{marginTop: 30, backgroundColor: "#4ABDAC", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
+            <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
               <Icon name='upload' />
               Submit
             </Button>
@@ -101,11 +101,11 @@ class JournalContainer extends Component {
           <div className='container-override'>
 		         <div style={{padding:25}} />
             <Header as='h2' style={{textAlign: 'center'}}>Journal</Header>
-            <Button style={{backgroundColor: "#4ABDAC", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
+            <Button style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
               <Icon name='file alternate' />
               New Entry
             </Button>
-            <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20, backgroundColor:'#F2EEE2', padding:10}}>
+            <Table basic='very' celled collapsing style={{width: 900, margin: "0 auto", marginTop: 20, backgroundColor:'#4ABDAC', padding:10}}>
               <Table.Header>
                 <Table.Row>
                   <Table.HeaderCell>Journal Entries</Table.HeaderCell>
