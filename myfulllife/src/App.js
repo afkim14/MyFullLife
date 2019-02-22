@@ -12,6 +12,12 @@ class App extends Component {
 }
 		
 export var canUseNumberKeys = true;
+		
+export var fontSizeMultiplier = 1;
+		
+export function updateFontSizeMultiplier(num) {
+	fontSizeMultiplier = num;
+}
 
 export function enableNumberKeys() {
 	canUseNumberKeys=true;
