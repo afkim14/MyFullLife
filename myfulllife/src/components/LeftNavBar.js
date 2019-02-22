@@ -23,6 +23,7 @@ class LeftNavBar extends Component {
   onItemSelection = (arg) => {
     this.setState({ selectedPath: arg.id });
     this.props.onNavBarClick(arg.id);
+	  enableNumberKeys();
   }
 
   handleKeyPress = (event) => {
@@ -58,6 +59,7 @@ class LeftNavBar extends Component {
 	  }
 	  this.props.onNavBarClick(chosenPage);
 	  this.setState({ selectedPath: chosenPage });
+	  enableNumberKeys();
   }
 
   componentDidMount() {
