@@ -9,8 +9,8 @@ import {
 import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
 
 const theme = {
-  hoverBgColor: "#f5f5f5",
-  selectionBgColor: "#f5f5f5",
+  hoverBgColor: "#F7B733",
+  selectionBgColor: "#F7B733",
   selectionIconColor: "#03A9F4"
 };
 
@@ -70,7 +70,7 @@ class LeftNavBar extends Component {
 
   render() {
     return (
-      <Container style={{background: 'radial-gradient(circle, rgba(161,161,161,1) 0%, rgba(212,212,212,1) 100%)', height:'100vh'}}>
+      <Container style={{background: '#e3e3e3', height:'100vh'}}>
         <h2 style={{textAlign: 'center', fontFamily:'Comfortaa', padding: '10px'}}>My Full Life Menu</h2>
 		<hr aria-hidden='true' />
         <SideNav theme={theme}

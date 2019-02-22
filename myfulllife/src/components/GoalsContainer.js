@@ -66,7 +66,7 @@ class GoalsContainer extends Component {
         <Container style={{textAlign: 'center'}}>
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
-          <Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
+          <Button style={{marginTop: 30, backgroundColor: "#4ABDAC", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
             Submit
           </Button>
@@ -80,10 +80,10 @@ class GoalsContainer extends Component {
           <Card.Group style={{marginLeft: 180}}>
           {
             this.state.goalCategories.map(c => {
-              return <Card>
-                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#fff"}} size='tiny' />
+              return <Card style={{backgroundColor: "#F2EEE2"}}>
+                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#F2EEE2"}} size='tiny' />
                       <Card.Content>
-                        <Card.Header><Button onClick={() => this.selectCategory(c.name)}>{c.name}</Button></Card.Header>
+                        <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white'}} onClick={() => this.selectCategory(c.name)}>{c.name}</Button></Card.Header>
                         <Card.Description>{c.meta}</Card.Description>
                       </Card.Content>
                     </Card>
@@ -94,22 +94,23 @@ class GoalsContainer extends Component {
       );
     } else {
       return (
-        <Container style={{textAlign: 'center'}}>
+        <div className='container-override'>
+          <div style={{padding:25}} />
           <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
-          <Button icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
+          <Button style={{backgroundColor: "#4ABDAC", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
             <Icon name='file alternate' />
             New Goal
           </Button>
-          <Card style={{width: "80%", margin: "0 auto", marginTop: 20}}>
+          <Card style={{width: "80%", margin: "0 auto", marginTop: 20, backgroundColor: "#F2EEE2"}}>
             <Card.Content>
-              <Card.Header>Current Goals</Card.Header>
+              <Card.Header style={{color: "#3e3e3e"}}>Current Goals</Card.Header>
             </Card.Content>
             <Card.Content>
-            <Table basic='very' celled collapsing style={{margin: "0 auto"}}>
+            <Table basic='very' celled collapsing style={{margin: "0 auto", width: "100%"}}>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>Goals</Table.HeaderCell>
-                  <Table.HeaderCell>Category</Table.HeaderCell>
+                  <Table.HeaderCell style={{color: "#3e3e3e"}}>Goals</Table.HeaderCell>
+                  <Table.HeaderCell style={{color: "#3e3e3e"}}>Category</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
               <Table.Body>
@@ -118,11 +119,11 @@ class GoalsContainer extends Component {
                               <Table.Cell>
                                 <Header as='h4' image>
                                   <Header.Content>
-                                    <a href="">{g.text}</a>
+                                    <a style={{color: "#3e3e3e"}} href="">{g.text}</a>
                                   </Header.Content>
                                 </Header>
                               </Table.Cell>
-                              <Table.Cell>{g.category}</Table.Cell>
+                              <Table.Cell style={{color: "#3e3e3e"}}>{g.category}</Table.Cell>
                             </Table.Row>
                 })}
               </Table.Body>
@@ -130,7 +131,7 @@ class GoalsContainer extends Component {
             </Card.Content>
           </Card>
           <div style={{width: 1000, margin: "0 auto", marginLeft: 220}}>
-            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10}}>
+            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#F2EEE2"}}>
               <Card.Content>
                 <Card.Header>Tips for Accomplishment</Card.Header>
               </Card.Content>
@@ -157,7 +158,7 @@ class GoalsContainer extends Component {
               </Table>
               </Card.Content>
             </Card>
-            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10}}>
+            <Card style={{width: "40%", margin: "0 auto", marginTop: 20, float: 'left', margin: 10, backgroundColor: "#F2EEE2"}}>
               <Card.Content>
                 <Card.Header>Completed Goals</Card.Header>
               </Card.Content>
@@ -166,7 +167,7 @@ class GoalsContainer extends Component {
               </Card.Content>
             </Card>
           </div>
-        </Container>
+        </div>
       );
     }
   }

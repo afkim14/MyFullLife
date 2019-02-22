@@ -54,7 +54,7 @@ class ContactsContainer extends Component {
           <Input onChange={this.updateName} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Name' />
           <Input onChange={this.updatePhone} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Phone Number' />
           <div style={{marginTop: 10}}>
-            <Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitContact()}>
+            <Button style={{backgroundColor: "#4ABDAC", color: 'white', marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitContact()}>
               <Icon name='upload' />
               Add New Contact
             </Button>
@@ -70,11 +70,11 @@ class ContactsContainer extends Component {
         <div className='container-override'>
 		  <div style={{padding: 25}} />
           <Header as='h2' style={{textAlign: 'center'}}>Contacts</Header>
-          <Button icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
+          <Button style={{backgroundColor: "#4ABDAC", color: 'white'}}  icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
             <Icon name='file alternate' />
             New Contact
           </Button>
-          <Table basic='very' celled collapsing style={{width: 900, backgroundColor:'lightGrey', padding: 10, margin: "0 auto", marginTop: 20}}>
+          <Table basic='very' celled collapsing style={{width: 900, backgroundColor:'#F2EEE2', padding: 10, margin: "0 auto", marginTop: 20}}>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>

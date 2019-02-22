@@ -71,23 +71,23 @@ class CommunityContainer extends Component {
         </div>
 		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {imagesInfo[this.state.currentImageIndex].text} </div>
 		<div style={grid}>
-			<div style={gridItem}> 
-				<div style={{fontSize: '16pt'}}> Upcoming Events </div>
+			<div style={gridItem}>
+				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Upcoming Events </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt'}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
+				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt'}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
+				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt'}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
+				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
 			</div>
 			<div style={gridItem}>
-				<div style={{fontSize: '16pt'}}> Links </div>
+				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Links </div>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
+				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
+				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
+				<a style={{fontSize: '12pt', color: "#3e3e3e"}} href='https://independentfutures.com/category/blog/'> News </a>
 			</div>
 		</div>
       </div>
@@ -107,7 +107,7 @@ const grid = {
 
 const gridItem = {
  padding: '20px',
- backgroundColor: 'white',
+ backgroundColor: '#F2EEE2',
  textAlign: 'center'
 };
 

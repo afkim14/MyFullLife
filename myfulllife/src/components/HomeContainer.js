@@ -107,13 +107,13 @@ const grid = {
 
 const gridItem1 = {
  padding: '20px',
- backgroundColor: 'rgb(251,175,105)',
+ backgroundColor: '#F7B733',
  textAlign: 'center'
 }
 
 const gridItem2 = {
  padding: '20px',
- backgroundColor: 'rgb(146,196,141)',
+ backgroundColor: '#4ABDAC',
  textAlign: 'center'
 }
 

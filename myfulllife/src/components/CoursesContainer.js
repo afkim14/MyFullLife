@@ -28,22 +28,23 @@ class CoursesContainer extends Component {
 
   render() {
     return (
-      <Container style={{textAlign: 'center'}}>
+      <div className='container-override'>
+        <div style={{padding:25}} />
         <Header as='h2' style={{textAlign: 'center'}}>Courses</Header>
-        <Card.Group style={{marginLeft: 180}}>
+        <Card.Group style={{marginLeft: 290}}>
         {
           this.state.courseCategories.map(c => {
-            return <Card>
-                    <Image src={c.image} style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#fff"}} size='tiny' />
+            return <Card style={{backgroundColor: "#F2EEE2"}}>
+                    <Image src={c.image} style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#F2EEE2"}} size='tiny' />
                     <Card.Content>
-                      <Card.Header><a href="">{c.name}</a></Card.Header>
-                      <Card.Description>{c.meta}</Card.Description>
+                      <Card.Header><a style={{color: "#3e3e3e"}} href="">{c.name}</a></Card.Header>
+                      <Card.Description style={{color: "#3e3e3e"}}>{c.meta}</Card.Description>
                     </Card.Content>
                   </Card>
           })
         }
         </Card.Group>
-      </Container>
+      </div>
     );
   }
 }
