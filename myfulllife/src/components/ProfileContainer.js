@@ -17,6 +17,38 @@ class ProfileContainer extends Component {
 	updateFontSizeMultiplier(evt.target.value);
 	this.setState({test: evt.target.value});
 }
+	buttonClicked = (evt) => {
+		updateFontSizeMultiplier(evt.target.value);
+		this.setState({test: evt.target})
+	}
+	
+	changeFontSize = (size) => {
+		updateFontSizeMultiplier(size);
+		this.setState({test: size});
+	}
+	
+	handleKeyPress = (event) => {
+  	  switch (event.keyCode)
+	  {
+		  case 81:
+			  this.changeFontSize(1);
+			  break;
+		  case 87:
+			  this.changeFontSize(1.5);
+			  break;
+		  case 69:
+			  this.changeFontSize(2);
+			  break;
+	  }
+  }
+	
+  componentDidMount() {
+	  document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+	  document.removeEventListener('keydown', this.handleKeyPress);
+  }
 
   render() {
     return (
@@ -36,11 +68,15 @@ class ProfileContainer extends Component {
 			<div style={{padding: 15}} />
 		</div>
 		<div style={{padding: 15}} />
-		<div style={{fontFamily:'Comfortaa', fontSize: 24}}> Font Size </div>
+		<div style={{fontFamily:'Comfortaa', fontSize: 24}}> Adjust Font Size </div>
 		<div style={{padding: 5}} />
-		<div class="slidecontainer">
-  			<input type="range" min="1" max="2" step="0.05" id="fontSlider" onChange={this.sliderChange} />
-		</div>
+		<div style={{margin:'0px auto',display:'inline-block'}}>
+			<div style={{float:'left', textAlign:'center'}}>
+				<button style={buttonStyle} value='1' onClick={this.buttonClicked}> Medium Font Size (Press Q) </button>
+				<button style={buttonStyle} value='1.5' onClick={this.buttonClicked}> Larger Font Size (Press W) </button>
+				<button style={buttonStyle} value='2' onClick={this.buttonClicked}> Largest Font Size (Press E) </button>
+			</div>
+	  	</div>
       </div>
     );
   }
@@ -56,6 +92,12 @@ const profilePic = {
     borderRadius: '500px',
     WebkitBorderRadius: '500px',
     MozBorderRadius: '500px'
+};
+
+const buttonStyle = {
+	width:'200px',
+	height:'100px',
+	margin:'15px'
 };
 
 

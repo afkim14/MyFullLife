@@ -43,8 +43,8 @@
 }
 
 body,html{
-  overflow:hidden;
   background-color: #F0EDF5;
+  line-height: 2em;
 }
 
 a {

@@ -70,6 +70,11 @@ class CommunityContainer extends Component {
           <img style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
         </div>
 		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {imagesInfo[this.state.currentImageIndex].text} </div>
+		<div style={{margin:'0px auto',display:'inline-block'}}>
+			<div style={{float:'left', textAlign:'center'}}>
+				<button style={buttonStyle} onClick={this.nextImage}> Next Story (Press Right Arrow) </button>
+			</div>
+	  	</div>
 		<div style={grid}>
 			<div style={gridItem}>
 				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Upcoming Events </div>
@@ -102,7 +107,7 @@ const grid = {
   gridTemplateColumns: 'auto auto',
   gridRowGap: '50px',
   gridColumnGap: '50px',
-  padding: '50px',
+  padding: '25px',
 };
 
 const gridItem = {
@@ -114,4 +119,10 @@ const gridItem = {
 const borderItem = {
 	fontSize: '12px',
 	border: '3px rounded black'
+};
+
+const buttonStyle = {
+	width:'200px',
+	height:'100px',
+	margin:'15px'
 };

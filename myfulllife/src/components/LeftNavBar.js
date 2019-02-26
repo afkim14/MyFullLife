@@ -72,7 +72,7 @@ class LeftNavBar extends Component {
 
   render() {
     return (
-      <Container style={{background: '#e3e3e3', height:'100vh'}}>
+      <Container style={{background: '#e3e3e3', height:'100%'}}>
         <h2 style={{textAlign: 'center', fontFamily:'Comfortaa', padding: '10px'}}>My Full Life Menu</h2>
 		<hr aria-hidden='true' />
         <SideNav theme={theme}
