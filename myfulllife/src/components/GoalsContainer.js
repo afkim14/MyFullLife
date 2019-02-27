@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Container,
   Image,
@@ -42,6 +43,7 @@ class GoalsContainer extends Component {
         {text: "Ask for assistance from a CIF staff member."}
       ]
     };
+	this.firstItemToRead = React.createRef();
   }
 
   updateGoalText = (evt) => {
@@ -59,12 +61,18 @@ class GoalsContainer extends Component {
   selectCategory = (category) => {
     this.setState({newGoal: true, newCategory: false, newCategoryText: category});
   }
+  
+  componentDidMount() {
+	  //document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
+  }
 
   render() {
     if (this.state.newGoal) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
           <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
@@ -75,7 +83,7 @@ class GoalsContainer extends Component {
     } else if (this.state.newCategory) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
           <Header as='h3' style={{color: "black", fontFamily:"Comfortaa", marginTop: 10}}>Select the category.</Header>
           <Card.Group style={{marginLeft: 180}}>
           {
@@ -96,7 +104,7 @@ class GoalsContainer extends Component {
       return (
         <div className='container-override'>
           <div style={{padding:25}} />
-          <Header as='h2' style={{textAlign: 'center'}}>Goals</Header>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
           <Button style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
             <Icon name='file alternate' />
             New Goal

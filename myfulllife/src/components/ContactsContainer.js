@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Container,
   Image,
@@ -26,6 +27,13 @@ class ContactsContainer extends Component {
       name: "",
       phone: ""
     };
+	this.firstItemToRead = React.createRef();
+  }
+	
+  componentDidMount() {
+	  //document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
   }
 
   updateName = (evt) => {
@@ -50,7 +58,7 @@ class ContactsContainer extends Component {
       return(
         <div className='container-override'>
 		  <div style={{padding: 25}} />
-          <Header as='h2' style={{textAlign: 'center'}}>Contacts</Header>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Contacts</h1>
           <Input onChange={this.updateName} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Name' />
           <Input onChange={this.updatePhone} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Phone Number' />
           <div style={{marginTop: 10}}>
@@ -69,7 +77,7 @@ class ContactsContainer extends Component {
       return (
         <div className='container-override'>
 		  <div style={{padding: 25}} />
-          <Header as='h2' style={{textAlign: 'center'}}>Contacts</Header>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Contacts</h1>
           <Button style={{backgroundColor: "#F7B733", color: 'white'}}  icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
             <Icon name='file alternate' />
             New Contact

@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Container,
   Image,
@@ -11,6 +12,7 @@ class ProfileContainer extends Component {
   constructor() {
     super();
     this.state = {test : 1};
+    this.firstItemToRead = React.createRef();
   }
 	
 	sliderChange = (evt) => {
@@ -44,6 +46,8 @@ class ProfileContainer extends Component {
 	
   componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
   }
 
   componentWillUnmount() {
@@ -54,7 +58,7 @@ class ProfileContainer extends Component {
     return (
       <div className='container-override'>
 		<div style={{padding: 25}} />
-        <Header as='h1' style={{textAlign: 'center', fontSize: fontSizeMultiplier * 48}}>Profile</Header>
+        <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize: fontSizeMultiplier*36}}>Profile</h1>
 		<div style={{textAlign: 'center'}}>
 			<img style={profilePic} src='./images/profile-photo.png' />
 		</div>

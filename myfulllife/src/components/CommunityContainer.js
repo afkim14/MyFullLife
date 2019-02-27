@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom'
 import {
   Container,
   Image,
@@ -28,6 +29,7 @@ class CommunityContainer extends Component {
   constructor() {
     super();
     this.state = {currentImageIndex: 0};
+	this.firstItemToRead = React.createRef();
   }
 
   handleKeyPress = (event) => {
@@ -54,6 +56,8 @@ class CommunityContainer extends Component {
 
     componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
   }
 
   componentWillUnmount() {
@@ -64,7 +68,7 @@ class CommunityContainer extends Component {
     return (
       <div className="container-override">
     		<div style={{padding:25}}></div>
-            <Header as='h1' style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Community</Header>
+            <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Community</h1>
     		<div style={{padding:25}}></div>
         <div style={{height: 330}}>
           <img style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />

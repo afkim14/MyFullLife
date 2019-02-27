@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Container,
   Image,
@@ -34,6 +35,7 @@ class JournalContainer extends Component {
       video: "",
       voice: ""
     };
+    this.firstItemToRead = React.createRef();
   }
 
   updateTitle = (evt) => {
@@ -52,13 +54,19 @@ class JournalContainer extends Component {
     enableNumberKeys();
     this.setState({newEntry: false});
   }
+  
+  componentDidMount() {
+	  //document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
+  }
 
   render() {
     if (this.state.newEntry) {
       return (
         <div style={{fontFamily:'Comfortaa', textAlign: 'center', height: '100vh'}}>
 		  <div style={{padding:25}} />
-          <h2 style={{textAlign: 'center'}}>New Journal Entry</h2>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Journal</h1>
 		  <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
               <Icon name='cancel' />
               Discard Entry
@@ -100,7 +108,7 @@ class JournalContainer extends Component {
         return (
           <div className='container-override'>
 		         <div style={{padding:25}} />
-            <Header as='h2' style={{textAlign: 'center'}}>Journal</Header>
+            <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Journal</h1>
             <Button style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
               <Icon name='file alternate' />
               New Entry

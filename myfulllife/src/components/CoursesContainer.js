@@ -1,4 +1,5 @@
 import React, { Component, Text } from 'react';
+import ReactDOM from 'react-dom';
 import {
   Container,
   Image,
@@ -24,13 +25,20 @@ class CoursesContainer extends Component {
         {name: "Wellness", meta: "Learn more about self-care and health.", image: "./icons/care.png"},
       ]
     };
+	this.firstItemToRead = React.createRef();
+  }
+	
+	componentDidMount() {
+	  //document.addEventListener('keydown', this.handleKeyPress);
+	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+	  firstElement.focus();
   }
 
   render() {
     return (
       <div className='container-override'>
         <div style={{padding:25}} />
-        <Header as='h2' style={{textAlign: 'center'}}>Courses</Header>
+        <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Courses</h1>
         <Card.Group style={{marginLeft: 290}}>
         {
           this.state.courseCategories.map(c => {
