@@ -7,6 +7,7 @@ import {
   Button
 } from 'semantic-ui-react'
 import { Slide } from 'react-slideshow-image'
+import {fontSizeMultiplier} from '../App.js'
 import PointsContainer from './PointsContainer';
 
 const properties = {
@@ -41,6 +42,15 @@ class CommunityContainer extends Component {
 		  case 39:
 			  this.nextImage();
 			  break;
+		  case 81:
+			  window.location = 'https://independentfutures.com';
+			  break;
+		  case 87:
+			  window.location = 'https://independentfutures.com/events-activities/';
+			  break;
+		  case 69:
+			  window.location = 'https://independentfutures.com/category/blog/';
+			  break;
 	  }
   }
 
@@ -73,30 +83,33 @@ class CommunityContainer extends Component {
         <div style={{height: 330}}>
           <img style={{width: 600}} src={imagesInfo[this.state.currentImageIndex].src} alt={imagesInfo[this.state.currentImageIndex].alt} />
         </div>
-		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:'12pt'}}> {imagesInfo[this.state.currentImageIndex].text} </div>
+		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:fontSizeMultiplier*16}}> {imagesInfo[this.state.currentImageIndex].text} </div>
 		<div style={{margin:'0px auto',display:'inline-block'}}>
+			<div style={{float:'left', textAlign:'center'}}>
+				<button style={buttonStyle} onClick={this.previousImage}> Previous Story (Press Left Arrow) </button>
+			</div>
 			<div style={{float:'left', textAlign:'center'}}>
 				<button style={buttonStyle} onClick={this.nextImage}> Next Story (Press Right Arrow) </button>
 			</div>
 	  	</div>
 		<div style={grid}>
 			<div style={gridItem}>
-				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Upcoming Events </div>
+				<div style={{fontSize: fontSizeMultiplier*24, color: "#3e3e3e"}}> Upcoming Events </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
+				<div style={{fontSize: fontSizeMultiplier*16, color: "#3e3e3e"}}> HeARTwords Workshop - Saturday 2/23 from 3-5:30pm at The C.I.F. </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
+				<div style={{fontSize: fontSizeMultiplier*16, color: "#3e3e3e"}}> Yoga - Monday 2/25 from 4-5pm at The Evanston Athletic Club </div>
 				<hr aria-hidden='true' />
-				<div style={{fontSize: '12pt', color: "#3e3e3e"}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
+				<div style={{fontSize: fontSizeMultiplier*16, color: "#3e3e3e"}}> Book Club - Monday 2/25 from 5-6pm at The Evanston Public Library </div>
 			</div>
 			<div style={gridItem}>
-				<div style={{fontSize: '16pt', color: "#3e3e3e"}}> Links </div>
+				<div style={{fontSize: fontSizeMultiplier*24, color: "#3e3e3e"}}> Links </div>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com'> Center For Independent Futures Website </a>
+				<a style={{fontSize: fontSizeMultiplier*16}} href='https://independentfutures.com'> Center For Independent Futures Website (Press Q)</a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar </a>
+				<a style={{fontSize: fontSizeMultiplier*16}} href='https://independentfutures.com/events-activities/'> Full Events and Activities Calendar (Press W)</a>
 				<hr aria-hidden='true' />
-				<a style={{fontSize: '12pt'}} href='https://independentfutures.com/category/blog/'> News </a>
+				<a style={{fontSize: fontSizeMultiplier*16}} href='https://independentfutures.com/category/blog/'> News (Press E)</a>
 			</div>
 		</div>
       </div>
@@ -128,5 +141,6 @@ const borderItem = {
 const buttonStyle = {
 	width:'200px',
 	height:'100px',
-	margin:'15px'
+	margin:'15px',
+	fontSize:'16pt'
 };
