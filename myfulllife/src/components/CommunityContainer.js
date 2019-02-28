@@ -86,7 +86,7 @@ class CommunityContainer extends Component {
 		<div style={{fontFamily:'Comfortaa', margin:'0', fontSize:fontSizeMultiplier*16}}> {imagesInfo[this.state.currentImageIndex].text} </div>
 		<div style={{margin:'0px auto',display:'inline-block'}}>
 			<div style={{float:'left', textAlign:'center'}}>
-				<button style={buttonStyle} onClick={this.previousImage}> Previous Story (Press Left Arrow) </button>
+				<button style={buttonStyle} onClick={this.prevImage}> Previous Story (Press Left Arrow) </button>
 			</div>
 			<div style={{float:'left', textAlign:'center'}}>
 				<button style={buttonStyle} onClick={this.nextImage}> Next Story (Press Right Arrow) </button>
@@ -129,7 +129,7 @@ const grid = {
 
 const gridItem = {
  padding: '20px',
- backgroundColor: '#4ABDAC',
+ backgroundColor: '#a8c9ff',
  textAlign: 'center'
 };
 

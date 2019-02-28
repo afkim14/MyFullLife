@@ -133,7 +133,7 @@ class LeftNavBar extends Component {
 			<img style={profilePic} src='./images/profile-photo.png' aria-hidden='true' />
 		</div>
 		<div style={{padding: '5px'}} />
-		<div style={{textAlign:'center', fontSize: '16pt'}} aria-hidden='true'> 30 Points </div>
+		<div style={{textAlign:'center', fontSize: '16pt'}} aria-hidden='true'> 30 Points Earned Today </div>
 		<div style={{padding: '5px'}} />
 		<div style={{textAlign: 'center'}}>
 			<img style={{width:'100px', height: '100px'}} src='./images/cif-logo.jpg' aria-hidden='true' />
