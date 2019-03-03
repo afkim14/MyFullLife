@@ -51,8 +51,11 @@ class GoalsContainer extends Component {
 	]
     };
 	this.firstItemToRead = React.createRef();
+	this.categoriesFirstItemToRead = React.createRef();
+	this.newGoalFirstItemToRead = React.createRef();
+	this.canUpdateNewGoal = true;
   }
-
+	
   updateGoalText = (evt) => {
     this.setState({newGoalText: evt.target.value});
   }
@@ -73,11 +76,9 @@ class GoalsContainer extends Component {
   	  switch (event.keyCode)
 	  {
 		  case 81:
-			  if (this.state.newGoal)
-				  this.submitGoal();
-			  else if (this.state.newCategory)
+			  if (this.state.newCategory)
 				  this.selectCategory('Professional');
-			  else
+			  else if (this.state.newCategory===false && this.state.newGoal===false && this.state.completedGoals===false)
 				  this.setState({newCategory: true});
 			  break;
 		  case 87:
@@ -114,6 +115,10 @@ class GoalsContainer extends Component {
 			  else if (this.state.completedGoals)
 				  this.setState({completedGoals: false});
 			  break;
+		  case 13:
+			  if (this.state.newGoal)
+				  this.submitGoal();
+			  break;
 	  }
   }
 
@@ -124,15 +129,39 @@ class GoalsContainer extends Component {
 	  firstElement.focus();
   }
 
+componentDidUpdate(){
+	if (this.state.newCategory)
+	{
+		var categoryFirstItem = ReactDOM.findDOMNode(this.categoriesFirstItemToRead.current);
+		categoryFirstItem.focus();
+		this.canUpdateNewGoal=true;
+	}
+	else if (this.state.newGoal)
+	{
+		if (this.canUpdateNewGoal===true)
+		{
+			var newGoalFirstItem = ReactDOM.findDOMNode(this.newGoalFirstItemToRead.current);
+			newGoalFirstItem.focus();
+			this.canUpdateNewGoal=false;
+		}
+	}
+	else
+	{
+	  	var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+		firstElement.focus();
+		this.canUpdateNewGoal=true;
+	}
+}
+
   render() {
     if (this.state.newGoal) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
+          <h1 tabIndex='0' ref={this.newGoalFirstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Enter Goal</h1>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
           <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
-            Submit (Press Q)
+            Submit (Press Enter)
           </Button>
 	  <div style={{fontSize: '24pt'}}>Category: {this.state.newCategoryText}</div>
 		<Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() =>  this.setState({newGoal: false})}>
@@ -143,15 +172,15 @@ class GoalsContainer extends Component {
     } else if (this.state.newCategory) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
-          <Header as='h3' style={{color: "black", fontFamily:"Comfortaa", marginTop: 10}}>Please select a category that best describes your goal.</Header>
+          <h1 style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
+          <h3 tabIndex='0' ref={this.categoriesFirstItemToRead} style={{color: "black", fontFamily:"Comfortaa", marginTop: 10}}>Please select a category that best describes your goal.</h3>
           <Card.Group style={{marginLeft: 100}}>
           {
             this.state.goalCategories.map(c => {
               return <Card style={{backgroundColor: "#a8c9ff"}}>
                       <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#a8c9ff"}} size='tiny' />
                       <Card.Content>
-                        <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white',fontSize:fontSizeMultiplier*12}} onClick={() => this.selectCategory(c.name)}>{c.name} (Press {c.button})</Button></Card.Header>
+                        <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white',fontSize:fontSizeMultiplier*16}} onClick={() => this.selectCategory(c.name)}>{c.name}<br/>(Press {c.button})</Button></Card.Header>
                         <Card.Description style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{c.meta}</Card.Description>
                       </Card.Content>
                     </Card>
@@ -164,7 +193,7 @@ class GoalsContainer extends Component {
 		return(
 		 <div className='container-override'>
           <div style={{padding:25}} />
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Completed Goals</h1>
           <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} onClick={() => this.setState({completedGoals: false})}>
             Back to Goals (Press Escape)
           </Button>
