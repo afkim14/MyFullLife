@@ -55,7 +55,7 @@ class GoalsContainer extends Component {
 	this.newGoalFirstItemToRead = React.createRef();
 	this.canUpdateNewGoal = true;
   }
-	
+
   updateGoalText = (evt) => {
     this.setState({newGoalText: evt.target.value});
   }
@@ -71,41 +71,41 @@ class GoalsContainer extends Component {
   selectCategory = (category) => {
     this.setState({newGoal: true, newCategory: false, newCategoryText: category});
   }
-  
+
   handleKeyPress = (event) => {
   	  switch (event.keyCode)
 	  {
-		  case 81:
+		  case 81: //Q
 			  if (this.state.newCategory)
 				  this.selectCategory('Professional');
 			  else if (this.state.newCategory===false && this.state.newGoal===false && this.state.completedGoals===false)
 				  this.setState({newCategory: true});
 			  break;
-		  case 87:
+		  case 87: // W
 			  if (this.state.newCategory)
 				  this.selectCategory('Coursework');
 			  else
 				  this.setState({completedGoals: true});
 			  break;
-		  case 82:
+		  case 82: //R
 			  if (this.state.newCategory)
 				  this.selectCategory('Getting Around');
-		  case 84:
+		  case 84: //T
 			  if (this.state.newCategory)
 				  this.selectCategory('Hopes and Dreams');
-		  case 89:
+		  case 89: //Y
 			  if (this.state.newCategory)
 				  this.selectCategory('Household');
-		  case 85:
+		  case 85: //U
 			  if (this.state.newCategory)
 				  this.selectCategory('Social');
-		  case 73:
+		  case 73: //I
 			  if (this.state.newCategory)
 				  this.selectCategory('Fun and Talents');
-		  case 79:
+		  case 79: //O
 			  if (this.state.newCategory)
 				  this.selectCategory('Wellness');
-		  case 69:
+		  case 69: //E
 			  if (this.state.newCategory)
 				  this.selectCategory('Athletic');
 			  break;
@@ -122,7 +122,7 @@ class GoalsContainer extends Component {
 	  }
   }
 
-  
+
   componentDidMount() {
 	  document.addEventListener('keydown', this.handleKeyPress);
 	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
