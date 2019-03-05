@@ -27,10 +27,85 @@ class CoursesContainer extends Component {
         {name: "Social", button:'U', meta: "Learn more about social skills.", image: "./icons/users.png"},
         {name: "Fun and Talents", button:'I', meta: "Learn more about entertainment and talents.", image: "./icons/confetti.png"},
         {name: "Wellness", button:'O', meta: "Learn more about self-care and health.", image: "./icons/care.png"},
+      ],
+      coursePDFs: [
+        {
+          category: "Professional",
+          links: [
+            {title: "Resume PDF", url: "./pdfs/Professional/ProfessionalResume.pdf"},
+            {title: "Scheduling PDF", url: "./pdfs/Professional/ProfessionalScheduling.pdf"},
+          ]
+        },
+        {
+          category: "Coursework",
+          links: [
+            {title: "Community Resource Info Sheet PDF", url: "./pdfs/Coursework/CommunityResourceInfoSheet.pdf"},
+            {title: "Making Time Priorities PDF", url: "./pdfs/Coursework/MakingTimePriorities.pdf"},
+          ]
+        },
+        {
+          category: "Athletic",
+          links: [
+            {title: "Overview PDF", url: "./pdfs/Athletic/Athletic.pdf"},
+            {title: "Couch Potato PDF", url: "./pdfs/Athletic/couchPotato.pdf"},
+          ]
+        },
+        {
+          category: "Getting Around",
+          links: [
+            {title: "Driving Licenses PDF", url: "./pdfs/GettingAround/GettingAroundLicenses.pdf"},
+            {title: "Modes of Transportation PDF", url: "./pdfs/GettingAround/GettingAroundModesOfTransportation.pdf"},
+          ]
+        },
+        {
+          category: "Hopes and Dreams",
+          links: [
+            {title: "Obstacles and Assets PDF", url: "./pdfs/HopesDreams/HopesAndDreamsObstaclesAssets.pdf"},
+            {title: "Overview PDF", url: "./pdfs/HopesDreams/HopesDreams.pdf"},
+          ]
+        },
+        {
+          category: "Household",
+          links: [
+            {title: "Action Plan PDF", url: "./pdfs/Household/Household.pdf"},
+            {title: "Dishwasher PDF", url: "./pdfs/Household/HouseholdDishwasher.pdf"},
+            {title: "Meals PDF", url: "./pdfs/Household/HouseholdMeals.pdf"},
+            {title: "Neatness PDF", url: "./pdfs/Household/HouseholdNeatness.pdf"},
+          ]
+        },
+        {
+          category: "Social",
+          links: [
+            {title: "Friendship PDF", url: "./pdfs/Social/FriendshipList.pdf"},
+            {title: "Social Friendship Stages PDF", url: "./pdfs/Social/SocialFriendshipStages.pdf"},
+            {title: "Social Media PDF", url: "./pdfs/Social/SocialUsingSocialMedia.pdf"},
+          ]
+        },
+        {
+          category: "Fun and Talents",
+          links: [
+            {title: "Overview PDF", url: "./pdfs/FunTalents/FunTalents.pdf"},
+            {title: "Daily Timeline Worksheet PDF", url: "./pdfs/FunTalents/FunTalentsWorksheet.pdf"},
+          ]
+        },
+        {
+          category: "Wellness",
+          links: [
+            {title: "Areas of Wellness PDF", url: "./pdfs/Wellness/AreasOfWellness.pdf"},
+            {title: "Handwashing PDF", url: "./pdfs/Wellness/WellnessHandwashing.pdf"},
+            {title: "Medication PDF", url: "./pdfs/Wellness/WellnessMedication.pdf"},
+          ]
+        }
       ]
     };
 	   this.firstItemToRead = React.createRef();
      this.categoriesFirstItemToRead = React.createRef();
+     this.canPressCoursePDF = true;
+  }
+
+  openInNewTab = (url) => {
+    var win = window.open(url, '_blank');
+    win.focus();
   }
 
   handleKeyPress = (event) => {
@@ -93,11 +168,15 @@ class CoursesContainer extends Component {
 
   componentDidUpdate() {
     if (this.state.selectedCourseCategory) {
-      var categoryFirstItem = ReactDOM.findDOMNode(this.categoriesFirstItemToRead.current);
-  		categoryFirstItem.focus();
+      if (this.state.canPressCoursePDF === true) {
+        var categoryFirstItem = ReactDOM.findDOMNode(this.categoriesFirstItemToRead.current);
+    		categoryFirstItem.focus();
+        this.state.canPressCoursePDF = false;
+      }
     } else {
       var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
   	  firstElement.focus();
+      this.state.canPressCoursePDF = true;
     }
   }
 
@@ -106,6 +185,23 @@ class CoursesContainer extends Component {
       return (
         <div className='container-override'>
           <h1 tabIndex='0' style={{fontSize: '24pt'}} ref={this.categoriesFirstItemToRead}>Category: {this.state.newCategoryText}</h1>
+          {
+            this.state.coursePDFs.filter(course => course.category === this.state.newCategoryText).map(c => {
+              return (
+                <div>
+                  {
+                    c.links.map(l => {
+                      return (
+                        <Button style={{backgroundColor: "#a8c9ff", color: 'black', display: 'block', margin: '0 auto', marginTop: 30,}} size="large" onClick={() => this.openInNewTab(l.url)}>
+                          {l.title}
+                        </Button>
+                      )
+                    })
+                  }
+                </div>
+              )
+            })
+          }
           <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
             Go back (Press Escape)
           </Button>
