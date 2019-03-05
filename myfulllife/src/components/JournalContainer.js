@@ -36,6 +36,8 @@ class JournalContainer extends Component {
       voice: ""
     };
     this.firstItemToRead = React.createRef();
+    this.newEntryFirstItemToRead = React.createRef();
+    this.canUpdateNewJournal = true;
   }
 
   updateTitle = (evt) => {
@@ -79,20 +81,31 @@ class JournalContainer extends Component {
 	  firstElement.focus();
   }
 
+  componentDidUpdate() {
+    if (this.state.newEntry) {
+      if (this.canUpdateNewJournal===true)
+  		{
+  			var newEntryFirstItem = ReactDOM.findDOMNode(this.newEntryFirstItemToRead.current);
+  			newEntryFirstItem.focus();
+  			this.canUpdateNewJournal=false;
+  		}
+    } else {
+      var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+  	  firstElement.focus();
+      this.canUpdateNewJournal=true;
+    }
+  }
+
   render() {
     if (this.state.newEntry) {
       return (
         <div style={{fontFamily:'Comfortaa', textAlign: 'center', height: '100vh'}}>
-		  <div style={{padding:25}} />
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Journal</h1>
-		  <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
-              <Icon name='cancel' />
-              Discard Entry (Press Escape)
-		  </Button>
+	        <div style={{padding:25}} />
+          <h1 tabIndex='0' ref={this.newEntryFirstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>New Journal</h1>
 	  	  <div style={{padding:5}} />
           <Input onChange={this.updateTitle} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Title' />
           <Form>
-            <TextArea onChange={this.updateDescription} style={{width: 600, height: 300}} placeholder='Description' />
+            <TextArea onChange={this.updateDescription} style={{width: 600, height: 300}} focus placeholder='Description' />
           </Form>
           <div style={{marginTop: 10}}>
             <Button onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
@@ -108,6 +121,10 @@ class JournalContainer extends Component {
               Voice
             </Button>
             <br></br>
+            <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
+              <Icon name='upload' />
+              Discard Entry (Press Escape)
+            </Button>
             <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
               <Icon name='upload' />
               Submit (Press Enter)
@@ -144,16 +161,16 @@ class JournalContainer extends Component {
                               <Table.Cell>
                                 <Header as='h4' image>
                                   {e.type == "text" &&
-                                    <Image src='./icons/text-document.png' rounded size='mini' />
+                                    <Image aria-hidden='true' src='./icons/text-document.png' rounded size='mini' />
                                   }
                                   {e.type == "image" &&
-                                    <Image src='./icons/camera-open.png' rounded size='mini' />
+                                    <Image aria-hidden='true' src='./icons/camera-open.png' rounded size='mini' />
                                   }
                                   {e.type == "video" &&
-                                    <Image src='./icons/video.png' rounded size='mini' />
+                                    <Image aria-hidden='true' src='./icons/video.png' rounded size='mini' />
                                   }
                                   {e.type == "voice" &&
-                                    <Image src='./icons/mic-open.png' rounded size='mini' />
+                                    <Image aria-hidden='true' src='./icons/mic-open.png' rounded size='mini' />
                                   }
                                   <Header.Content>
                                     <a style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}} href="">{e.title}</a>

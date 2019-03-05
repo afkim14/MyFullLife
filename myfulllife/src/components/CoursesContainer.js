@@ -30,6 +30,7 @@ class CoursesContainer extends Component {
       ]
     };
 	   this.firstItemToRead = React.createRef();
+     this.categoriesFirstItemToRead = React.createRef();
   }
 
   handleKeyPress = (event) => {
@@ -90,11 +91,24 @@ class CoursesContainer extends Component {
 	  firstElement.focus();
   }
 
+  componentDidUpdate() {
+    if (this.state.selectedCourseCategory) {
+      var categoryFirstItem = ReactDOM.findDOMNode(this.categoriesFirstItemToRead.current);
+  		categoryFirstItem.focus();
+    } else {
+      var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+  	  firstElement.focus();
+    }
+  }
+
   render() {
     if (this.state.selectedCourseCategory) {
       return (
         <div className='container-override'>
-          <p style={{fontSize: '24pt'}}>Category: {this.state.newCategoryText}</p>
+          <h1 tabIndex='0' style={{fontSize: '24pt'}} ref={this.categoriesFirstItemToRead}>Category: {this.state.newCategoryText}</h1>
+          <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
+            Go back (Press Escape)
+          </Button>
         </div>
       );
     } else {
@@ -106,7 +120,7 @@ class CoursesContainer extends Component {
           {
             this.state.courseCategories.map(c => {
               return <Card style={{backgroundColor: "#a8c9ff"}}>
-                      <Image src={c.image} style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#a8c9ff"}} size='tiny' />
+                      <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#a8c9ff"}} size='tiny' />
                       <Card.Content>
                         <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white',fontSize:fontSizeMultiplier*16}} onClick={() => this.selectCategory(c.name)}>{c.name}<br/>(Press {c.button})</Button></Card.Header>
                         <Card.Description style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{c.meta}</Card.Description>

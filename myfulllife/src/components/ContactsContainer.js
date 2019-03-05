@@ -28,7 +28,9 @@ class ContactsContainer extends Component {
       name: "",
       phone: ""
     };
-	this.firstItemToRead = React.createRef();
+  	this.firstItemToRead = React.createRef();
+    this.newEntryFirstItemToRead = React.createRef();
+    this.canUpdateNewContact = true;
   }
 
   handleKeyPress = (event) => {
@@ -55,6 +57,21 @@ class ContactsContainer extends Component {
 	  firstElement.focus();
   }
 
+  componentDidUpdate() {
+    if (this.state.newEntry) {
+      if (this.canUpdateNewContact===true)
+  		{
+  			var newEntryFirstItem = ReactDOM.findDOMNode(this.newEntryFirstItemToRead.current);
+  			newEntryFirstItem.focus();
+  			this.canUpdateNewContact=false;
+  		}
+    } else {
+      var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+  	  firstElement.focus();
+      this.canUpdateNewContact=true;
+    }
+  }
+
   updateName = (evt) => {
     this.setState({name: evt.target.value});
   }
@@ -77,17 +94,17 @@ class ContactsContainer extends Component {
       return(
         <div className='container-override'>
 		  <div style={{padding: 25}} />
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Contacts</h1>
+          <h1 tabIndex='0' ref={this.newEntryFirstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>New Contact</h1>
           <Input onChange={this.updateName} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Name' />
           <Input onChange={this.updatePhone} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Phone Number' />
           <div style={{marginTop: 10}}>
+              <Button style={{backgroundColor: "#FC4A1A", color: 'white', marginTop: 30}} size="large" icon labelPosition='left' onClick={() => {enableNumberKeys(); this.setState({newEntry: false})}}>
+                <Icon name='cancel' />
+                Cancel (Press Escape)
+              </Button>
             <Button style={{backgroundColor: "#F7B733", color: 'white', marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitContact()}>
               <Icon name='upload' />
               Add New Contact (Press Enter)
-            </Button>
-			<Button style={{marginTop: 30}} size="large" icon labelPosition='left' onClick={() => {enableNumberKeys(); this.setState({newEntry: false})}}>
-              <Icon name='cancel' />
-              Cancel (Press Escape)
             </Button>
           </div>
         </div>
@@ -113,7 +130,7 @@ class ContactsContainer extends Component {
                   return <Table.Row>
                             <Table.Cell>
                               <Header as='h4' image>
-                                <Image src='./icons/contacts.png' rounded size='mini' />
+                                <Image aria-hidden='true' src='./icons/contacts.png' rounded size='mini' />
                                 <Header.Content>
                                   <a style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}} href="">{c.name}</a>
                                 </Header.Content>

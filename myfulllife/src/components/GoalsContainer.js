@@ -157,15 +157,17 @@ componentDidUpdate(){
     if (this.state.newGoal) {
       return (
         <Container style={{textAlign: 'center'}}>
-          <h1 tabIndex='0' ref={this.newGoalFirstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Enter Goal</h1>
+          <h1 tabIndex='0' ref={this.newGoalFirstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>New Goal</h1>
           <Input onChange={this.updateGoalText} style={{marginBottom: 10, width: 600}} size='large' focus placeholder='Goal Description' />
+
+      	  <div style={{fontSize: '24pt'}}>Category: {this.state.newCategoryText}</div>
+          <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() =>  this.setState({newGoal: false})}>
+            <Icon name='upload' />
+            Cancel (Press Escape)
+          </Button>
           <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
             Submit (Press Enter)
-          </Button>
-	  <div style={{fontSize: '24pt'}}>Category: {this.state.newCategoryText}</div>
-		<Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() =>  this.setState({newGoal: false})}>
-            Cancel (Press Escape)
           </Button>
         </Container>
       );
