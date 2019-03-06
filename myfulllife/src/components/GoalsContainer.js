@@ -284,9 +284,6 @@ componentDidUpdate(){
               <Card.Content>
               <Table basic='very' celled collapsing style={{margin: "0 auto"}}>
                 <Table.Header>
-                  <Table.Row>
-                    <Table.HeaderCell>Tips</Table.HeaderCell>
-                  </Table.Row>
                 </Table.Header>
                 <Table.Body>
                   {this.state.tips.map(t => {
