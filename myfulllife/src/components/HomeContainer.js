@@ -85,11 +85,11 @@ class HomeContainer extends Component {
 				</div>
 				<div style={gridItem2}>
 					<Image style={tipIconStyle} src='./icons/community.png' alt="Community Update" aria-hidden='true' />
-					<div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}> There’s some great events happening at the C.I.F. this week. Check out the Community tab to learn more! </div>
+					<div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}> There’s some great events happening at the C.I.F. this week. Check out the Community tab on the left or by pressing 2! </div>
 				</div>
 				<div style={gridItem3}>
 					<Image style={tipIconStyle} src='./icons/goals.png' alt="Goals Update" aria-hidden='true'/>
-					<div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}> You are so close to finishing the goal “Healthy Eating”! Discover your progress over on the Goal tab.</div>
+					<div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}> You are so close to finishing the goal “Healthy Eating”! Discover your progress over on the Goal tab, or press 4.</div>
 				</div>
 				<div style={gridItem4}>
 					<Image style={tipIconStyle} src='./icons/journal.png' alt="Journal Update" aria-hidden='true'/>

@@ -20,6 +20,7 @@ class JournalContainer extends Component {
     super();
     this.state = {
       newEntry: false,
+      newJournalComplete: false,
       altView: false,
       entries: [
         {title: "My Trip to The Mall", type: "text", date: "02/16/2019"},
@@ -37,6 +38,7 @@ class JournalContainer extends Component {
     };
     this.firstItemToRead = React.createRef();
     this.newEntryFirstItemToRead = React.createRef();
+    this.newJournalCompleteFirstToRead = React.createRef();
     this.canUpdateNewJournal = true;
   }
 
@@ -51,10 +53,10 @@ class JournalContainer extends Component {
   submitEntry = () => {
     var newEntries = this.state.entries;
     if (this.state.title != "") {
-      newEntries.push({title: this.state.title, description: this.state.description, type: "text", date: "02/20/2019"});
+      newEntries.unshift({title: this.state.title, description: this.state.description, type: "text", date: "02/20/2019"});
     }
     enableNumberKeys();
-    this.setState({newEntry: false});
+    this.setState({newEntry: false, newJournalComplete: true});
   }
 
   handleKeyPress = (event) => {
@@ -73,8 +75,11 @@ class JournalContainer extends Component {
         }
         break;
       case 13: // Enter
-        if (this.state.newEntry)
-          this.submitEntry();
+		if (event.shiftKey)
+		{
+        	if (this.state.newEntry)
+          		this.submitEntry();
+		}
         break;
     }
   }
@@ -93,6 +98,10 @@ class JournalContainer extends Component {
   			newEntryFirstItem.focus();
   			this.canUpdateNewJournal=false;
   		}
+    } else if (this.state.newJournalComplete) {
+      var firstElement=ReactDOM.findDOMNode(this.newJournalCompleteFirstToRead.current);
+      firstElement.focus();
+      this.canUpdateNewJournal=false;
     } else {
       var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
   	  firstElement.focus();
@@ -126,12 +135,12 @@ class JournalContainer extends Component {
             </Button>
             <br></br>
             <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
-              <Icon name='upload' />
+              <Icon name='cancel' />
               Discard Entry (Press Escape)
             </Button>
-            <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
+            <Button style={{marginTop: 30, backgroundColor: "#2770f7", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
               <Icon name='upload' />
-              Submit (Press Enter)
+              Submit (Press Shift + Enter)
             </Button>
           </div>
         </div>
@@ -148,7 +157,7 @@ class JournalContainer extends Component {
           <div className='container-override'>
 		         <div style={{padding:25}} />
             <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Journal</h1>
-            <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
+            <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
               <Icon name='file alternate' />
               New Entry (Press Q)
             </Button>
@@ -160,8 +169,8 @@ class JournalContainer extends Component {
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.state.entries.map(e => {
-                    return <Table.Row>
+                {this.state.entries.map((e, i) => {
+                    return <Table.Row key={i}>
                               <Table.Cell>
                                 <Header as='h4' image>
                                   {e.type == "text" &&
@@ -177,7 +186,11 @@ class JournalContainer extends Component {
                                     <Image aria-hidden='true' src='./icons/mic-open.png' rounded size='mini' />
                                   }
                                   <Header.Content>
-                                    <a style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}} href="">{e.title}</a>
+                                    {i==0 ?
+                                      <a tabIndex='0' ref={this.newJournalCompleteFirstToRead} style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}} href="">{this.state.newJournalComplete ? "New Journal: " + e.title : e.title}</a>
+                                      :
+                                      <a style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}} href="">{e.title}</a>
+                                    }
                                     <Header.Subheader>{e.type}</Header.Subheader>
                                   </Header.Content>
                                 </Header>

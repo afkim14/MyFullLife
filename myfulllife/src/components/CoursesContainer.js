@@ -20,7 +20,7 @@ class CoursesContainer extends Component {
       newCategoryText: "",
       courseCategories: [
         {name: "Professional", button:'Q', meta: "Learn more about jobs.", image: "./icons/suitcase.png"},
-        {name: "Coursework", button:'W', meta: "Learn more about courseworks.", image: "./icons/open-book.png"},
+        {name: "Time Management", button:'W', meta: "Learn more about time management.", image: "./icons/open-book.png"},
         {name: "Athletic", button:'E', meta: "Learn more about exercise and sports.", image: "./icons/running.png"},
         {name: "Getting Around", button:'R', meta: "Learn more about safety skills.", image: "./icons/getting-around.png"},
         {name: "Hopes and Dreams", button:'T', meta: "Learn more about hopes and dreams.", image: "./icons/human.png"},
@@ -38,7 +38,7 @@ class CoursesContainer extends Component {
           ]
         },
         {
-          category: "Coursework",
+          category: "Time Management",
           links: [
             {title: "Community Resource Info Sheet PDF", url: "./pdfs/Coursework/CommunityResourceInfoSheet.pdf"},
             {title: "Making Time Priorities PDF", url: "./pdfs/Coursework/MakingTimePriorities.pdf"},
@@ -149,8 +149,10 @@ class CoursesContainer extends Component {
           this.selectCategory('Athletic');
         break;
 		  case 27: // Escape
-        if (this.state.selectedCourseCategory)
+        if (this.state.selectedCourseCategory) {
           this.setState({selectedCourseCategory: false});
+          enableNumberKeys();
+        }
 			  break;
 		  case 13: // Enter
 			  break;
@@ -204,7 +206,7 @@ class CoursesContainer extends Component {
               )
             })
           }
-          <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
+          <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
             Go back (Press Escape)
           </Button>
         </div>
@@ -213,7 +215,7 @@ class CoursesContainer extends Component {
       return (
         <div className='container-override'>
           <div style={{padding:25}} />
-          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Courses</h1>
+          <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Coursework</h1>
           <Card.Group style={{marginLeft: 290}}>
           {
             this.state.courseCategories.map(c => {
