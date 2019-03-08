@@ -12,6 +12,7 @@ import {
 } from 'semantic-ui-react'
 import {fontSizeMultiplier} from '../App.js';
 import PointsContainer from './PointsContainer';
+import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
 
 class GoalsContainer extends Component {
   constructor() {
@@ -19,9 +20,10 @@ class GoalsContainer extends Component {
     this.state = {
       newGoal: false,
       newCategory: false,
-	  completedGoals:false,
+	     completedGoals:false,
       newCategoryText: "",
       newGoalText: "",
+      newGoalComplete: false,
 
       goals: [
         {text: "Play basketball once a week.", progress: 'Played for 3 weeks in a row. Nice work!', category: "Athletic"},
@@ -53,6 +55,7 @@ class GoalsContainer extends Component {
 	this.firstItemToRead = React.createRef();
 	this.categoriesFirstItemToRead = React.createRef();
 	this.newGoalFirstItemToRead = React.createRef();
+  this.newGoalCompleteFirstToRead = React.createRef();
 	this.canUpdateNewGoal = true;
   }
 
@@ -63,9 +66,10 @@ class GoalsContainer extends Component {
   submitGoal = () => {
     var newGoals = this.state.goals;
     if (this.state.newGoalText != "") {
-      newGoals.push({text: this.state.newGoalText, progress:"Needs completion.", category: this.state.newCategoryText});
+      newGoals.unshift({text: this.state.newGoalText, progress:"Needs completion.", category: this.state.newCategoryText});
     }
-    this.setState({newGoal: false});
+    this.setState({newGoal: false, newGoalComplete: true});
+    enableNumberKeys();
   }
 
   selectCategory = (category) => {
@@ -76,44 +80,69 @@ class GoalsContainer extends Component {
   	  switch (event.keyCode)
 	  {
 		  case 81: //Q
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Professional');
-			  else if (this.state.newCategory===false && this.state.newGoal===false && this.state.completedGoals===false)
+          disableNumberKeys();
+        } else if (this.state.newCategory===false && this.state.newGoal===false && this.state.completedGoals===false) {
 				  this.setState({newCategory: true});
+          enableNumberKeys();
+        }
 			  break;
 		  case 87: // W
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Coursework');
-			  else
+          disableNumberKeys();
+        }
+			  else {
 				  this.setState({completedGoals: true});
+          disableNumberKeys();
+        }
 			  break;
 		  case 82: //R
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Getting Around');
+          disableNumberKeys();
+        }
 		  case 84: //T
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Hopes and Dreams');
+          disableNumberKeys();
+        }
 		  case 89: //Y
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Household');
+          disableNumberKeys();
+        }
 		  case 85: //U
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Social');
+          disableNumberKeys();
+        }
 		  case 73: //I
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Fun and Talents');
+          disableNumberKeys();
+        }
 		  case 79: //O
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Wellness');
+          disableNumberKeys();
+        }
 		  case 69: //E
-			  if (this.state.newCategory)
+			  if (this.state.newCategory) {
 				  this.selectCategory('Athletic');
+          disableNumberKeys();
+        }
 			  break;
 		  case 27:
-			  if (this.state.newGoal)
+			  if (this.state.newGoal) {
 				  this.setState({newGoal: false});
-			  else if (this.state.completedGoals)
+          enableNumberKeys();
+        }
+			  else if (this.state.completedGoals) {
 				  this.setState({completedGoals: false});
+          enableNumberKeys();
+        }
 			  break;
 		  case 13:
 			  if (this.state.newGoal)
@@ -145,9 +174,14 @@ componentDidUpdate(){
 			this.canUpdateNewGoal=false;
 		}
 	}
+  else if (this.state.newGoalComplete) {
+    var firstElement=ReactDOM.findDOMNode(this.newGoalCompleteFirstToRead.current);
+    firstElement.focus();
+    this.canUpdateNewGoal=false;
+  }
 	else
 	{
-	  	var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
+  	var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
 		firstElement.focus();
 		this.canUpdateNewGoal=true;
 	}
@@ -182,7 +216,7 @@ componentDidUpdate(){
               return <Card style={{backgroundColor: "#a8c9ff"}}>
                       <Image src={c.image} aria-hidden='true' style={{margin: '0 auto', marginTop: '20px', marginBottom: '20px', backgroundColor: "#a8c9ff"}} size='tiny' />
                       <Card.Content>
-                        <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white',fontSize:fontSizeMultiplier*16}} onClick={() => this.selectCategory(c.name)}>{c.name}<br/>(Press {c.button})</Button></Card.Header>
+                        <Card.Header><Button style={{backgroundColor: "#4ABDAC", color: 'white',fontSize:fontSizeMultiplier*16}} onClick={() => { disableNumberKeys(); this.selectCategory(c.name)}}>{c.name}<br/>(Press {c.button})</Button></Card.Header>
                         <Card.Description style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{c.meta}</Card.Description>
                       </Card.Content>
                     </Card>
@@ -257,14 +291,18 @@ componentDidUpdate(){
                 </Table.Row>
               </Table.Header>
               <Table.Body>
-                {this.state.goals.map(g => {
-                    return <Table.Row>
+                {this.state.goals.map((g, i) => {
+                    return <Table.Row key={i}>
                               <Table.Cell style={{fontSize:fontSizeMultiplier*16}}>
                                 <Header as='h4' image>
                                   <Header.Content>
-									<div style={{float:'left', display:'inline-block'}}>
-										<div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{g.text}</div>
-									</div>
+                  									<div style={{float:'left', display:'inline-block'}}>
+                  										{i==0 ?
+                                        <div tabIndex='0' ref={this.newGoalCompleteFirstToRead} style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{this.state.newGoalComplete ? "New Goal: " + g.text : g.text}</div>
+                                        :
+                                        <div style={{fontFamily:'Comfortaa', fontSize:fontSizeMultiplier*16}}>{g.text}</div>
+                                      }
+                  									</div>
                                   </Header.Content>
                                 </Header>
                               </Table.Cell>

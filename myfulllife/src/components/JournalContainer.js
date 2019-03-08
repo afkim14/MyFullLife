@@ -61,12 +61,16 @@ class JournalContainer extends Component {
     switch (event.keyCode)
     {
       case 81: //Q
-        if (!this.state.newEntry)
+        if (!this.state.newEntry) {
           this.setState({newEntry: true});
+          disableNumberKeys();
+        }
         break;
       case 27: // Escape
-        if (this.state.newEntry)
+        if (this.state.newEntry) {
           this.setState({newEntry: false});
+          enableNumberKeys();
+        }
         break;
       case 13: // Enter
         if (this.state.newEntry)

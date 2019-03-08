@@ -10,6 +10,7 @@ import {
 } from 'semantic-ui-react'
 import {fontSizeMultiplier} from '../App.js';
 import PointsContainer from './PointsContainer';
+import { canUseNumberKeys, enableNumberKeys, disableNumberKeys } from '../App.js';
 
 class CoursesContainer extends Component {
   constructor() {
@@ -164,6 +165,7 @@ class CoursesContainer extends Component {
 	  document.addEventListener('keydown', this.handleKeyPress);
 	  var firstElement=ReactDOM.findDOMNode(this.firstItemToRead.current);
 	  firstElement.focus();
+    enableNumberKeys();
   }
 
   componentDidUpdate() {
