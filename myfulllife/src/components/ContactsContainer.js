@@ -47,8 +47,11 @@ class ContactsContainer extends Component {
           this.setState({newEntry: false});
         break;
       case 13: // Enter
-        if (this.state.newEntry)
-          this.submitContact();
+		if (event.shiftKey)
+		{
+        	if (this.state.newEntry)
+          		this.submitContact();
+		}
         break;
     }
   }
@@ -117,9 +120,9 @@ updateEmail = (evt) => {
                 <Icon name='cancel' />
                 Cancel (Press Escape)
               </Button>
-            <Button style={{backgroundColor: "#F7B733", color: 'white', marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitContact()}>
+            <Button style={{backgroundColor: "#2770f7", color: 'white', marginTop: 30}} size="large" icon labelPosition='left' onClick={() => this.submitContact()}>
               <Icon name='upload' />
-              Add New Contact (Press Enter)
+              Add New Contact (Press Shift + Enter)
             </Button>
           </div>
         </div>
@@ -129,7 +132,7 @@ updateEmail = (evt) => {
         <div className='container-override'>
 		  <div style={{padding: 25}} />
           <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Contacts</h1>
-          <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}}  icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
+          <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}}  icon labelPosition='left' onClick={() => {disableNumberKeys(); this.setState({newEntry: true})}}>
             <Icon name='file alternate' />
             New Contact (Press Q)
           </Button>

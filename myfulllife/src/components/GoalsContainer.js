@@ -115,9 +115,12 @@ class GoalsContainer extends Component {
 			  else if (this.state.completedGoals)
 				  this.setState({completedGoals: false});
 			  break;
-		  case 13:
-			  if (this.state.newGoal)
-				  this.submitGoal();
+		  case 13: //Enter Key
+			  if (event.shiftKey)
+			  {
+				  if (this.state.newGoal)
+				  	this.submitGoal();
+			  }
 			  break;
 	  }
   }
@@ -162,12 +165,12 @@ componentDidUpdate(){
 
       	  <div style={{fontSize: '24pt'}}>Category: {this.state.newCategoryText}</div>
           <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() =>  this.setState({newGoal: false})}>
-            <Icon name='upload' />
+            <Icon name='cancel' />
             Cancel (Press Escape)
           </Button>
-          <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
+          <Button style={{marginTop: 30, backgroundColor: "#2770f7", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitGoal()}>
             <Icon name='upload' />
-            Submit (Press Enter)
+            Submit (Press Shift + Enter)
           </Button>
         </Container>
       );
@@ -196,7 +199,7 @@ componentDidUpdate(){
 		 <div className='container-override'>
           <div style={{padding:25}} />
           <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Completed Goals</h1>
-          <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} onClick={() => this.setState({completedGoals: false})}>
+          <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}} onClick={() => this.setState({completedGoals: false})}>
             Back to Goals (Press Escape)
           </Button>
           <Card style={{width: "60%", margin: "0 auto", marginTop: 20, backgroundColor: "#a8c9ff"}}>
@@ -239,7 +242,7 @@ componentDidUpdate(){
         <div className='container-override'>
           <div style={{padding:25}} />
           <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Goals</h1>
-          <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
+          <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}} icon labelPosition='left' onClick={() => this.setState({newCategory: true})}>
             <Icon aria-hidden='true' name='file alternate' />
             New Goal (Press Q)
           </Button>
@@ -306,7 +309,7 @@ componentDidUpdate(){
                 <Card.Header>Completed Goals</Card.Header>
               </Card.Content>
               <Card.Content>
-                <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} onClick={() => this.setState({completedGoals: true})}>Click to View (or Press W)</Button>
+                <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}} onClick={() => this.setState({completedGoals: true})}>Click to View (or Press W)</Button>
               </Card.Content>
             </Card>
           </div>

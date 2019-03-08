@@ -202,7 +202,7 @@ class CoursesContainer extends Component {
               )
             })
           }
-          <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
+          <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" onClick={() => this.setState({selectedCourseCategory: false})}>
             Go back (Press Escape)
           </Button>
         </div>

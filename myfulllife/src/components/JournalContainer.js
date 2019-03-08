@@ -69,8 +69,11 @@ class JournalContainer extends Component {
           this.setState({newEntry: false});
         break;
       case 13: // Enter
-        if (this.state.newEntry)
-          this.submitEntry();
+		if (event.shiftKey)
+		{
+        	if (this.state.newEntry)
+          		this.submitEntry();
+		}
         break;
     }
   }
@@ -122,12 +125,12 @@ class JournalContainer extends Component {
             </Button>
             <br></br>
             <Button style={{marginTop: 30, backgroundColor: "#FC4A1A", color: 'white'}} size="large" icon labelPosition='left' onClick={() => { enableNumberKeys(); this.setState({newEntry: false});}}>
-              <Icon name='upload' />
+              <Icon name='cancel' />
               Discard Entry (Press Escape)
             </Button>
-            <Button style={{marginTop: 30, backgroundColor: "#F7B733", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
+            <Button style={{marginTop: 30, backgroundColor: "#2770f7", color: 'white'}} size="large" icon labelPosition='left' onClick={() => this.submitEntry()}>
               <Icon name='upload' />
-              Submit (Press Enter)
+              Submit (Press Shift + Enter)
             </Button>
           </div>
         </div>
@@ -144,7 +147,7 @@ class JournalContainer extends Component {
           <div className='container-override'>
 		         <div style={{padding:25}} />
             <h1 tabIndex='0' ref={this.firstItemToRead} style={{fontFamily:'Comfortaa', margin:'0', fontSize:'36pt'}}>Journal</h1>
-            <Button size='huge' style={{backgroundColor: "#F7B733", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
+            <Button size='huge' style={{backgroundColor: "#2770f7", color: 'white'}} icon labelPosition='left' onClick={() => { disableNumberKeys(); this.setState({newEntry: true});}}>
               <Icon name='file alternate' />
               New Entry (Press Q)
             </Button>
